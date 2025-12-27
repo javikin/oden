@@ -4,8 +4,8 @@
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/oden-forge.git
-cd oden-forge
+git clone https://github.com/javikin/oden.git
+cd oden
 
 # 2. Ejecutar el instalador
 ./install.sh

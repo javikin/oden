@@ -17,10 +17,12 @@ La metodología Oden se basa en tres principios:
 ## Quick Start
 
 ```bash
-# Instalar Oden Forge (copiar a tu directorio .claude)
-cp -r oden-forge/.claude/* ~/.claude/
+# Clonar e instalar
+git clone https://github.com/javikin/oden.git
+cd oden
+./install.sh
 
-# Iniciar un nuevo proyecto
+# En Claude Code, iniciar un nuevo proyecto
 /oden:init
 ```
 
@@ -236,12 +238,15 @@ docs/
 ## Estructura del Proyecto
 
 ```
-oden-forge/
+oden/
 ├── .claude/
-│   ├── commands/oden/      # 14 skills/comandos
-│   ├── agents/             # 5 agentes especializados
-│   ├── rules/              # Reglas de metodología
-│   └── templates/          # Templates por tipo
+│   ├── commands/oden/      # 52 comandos unificados
+│   ├── scripts/oden/       # 14 scripts de soporte
+│   ├── hooks/              # Hooks de git
+│   ├── rules/              # 10 reglas de metodología
+│   ├── prds/               # PRDs locales
+│   └── epics/              # Epics locales
+├── install.sh              # Instalador automático
 ├── INSTALL.md              # Guía de instalación
 └── README.md
 ```
@@ -307,41 +312,21 @@ oden-forge/
 
 ---
 
-## Integración con CCPM
-
-Oden Forge se integra con [CCPM](https://github.com/automazeio/ccpm) para sincronización con GitHub.
-
-**Nota:** Si ya tienes CCPM instalado, puedes usar sus comandos directamente:
-
-| Oden Forge | CCPM Directo |
-|------------|--------------|
-| `/oden:sync prd` | `/pm:prd-new` |
-| `/oden:sync epic` | `/pm:prd-parse` |
-| `/oden:sync tasks` | `/pm:epic-decompose` |
-| `/oden:sync github` | `/pm:epic-sync` |
-| `/oden:sync start` | `/pm:epic-start` |
-| `/oden:sync issue` | `/pm:issue-start` |
-| `/oden:sync close` | `/pm:issue-close` |
-| `/oden:sync status` | `/pm:status` |
-
-### Requisitos para GitHub Sync
+## Requisitos
 
 ```bash
-# 1. GitHub CLI instalado y autenticado
+# GitHub CLI instalado y autenticado (para sync con GitHub)
 gh auth status
 
-# 2. Git remote configurado
-git remote get-url origin
-
-# 3. CCPM instalado (opcional pero recomendado)
-ls ~/.claude/commands/pm/
+# Git configurado
+git --version
 ```
 
 ---
 
 ## Inspiración
 
-Oden Forge está inspirado en:
+Oden está inspirado en:
 - [CCPM](https://github.com/automazeio/ccpm) - Claude Code Project Manager
 - Metodología Oden - Documentation-First Development
 - Design Sprints de Google Ventures
