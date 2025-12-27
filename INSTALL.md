@@ -3,9 +3,9 @@
 ## Instalación Rápida (Recomendada)
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/javikin/oden.git
-cd oden
+# 1. Clonar el repositorio (reemplaza "mi-proyecto" con el nombre de tu proyecto)
+git clone https://github.com/javikin/oden.git mi-proyecto
+cd mi-proyecto
 
 # 2. Ejecutar el instalador
 ./install.sh

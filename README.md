@@ -17,9 +17,9 @@ La metodología Oden se basa en tres principios:
 ## Quick Start
 
 ```bash
-# Clonar e instalar
-git clone https://github.com/javikin/oden.git
-cd oden
+# Clonar e instalar (reemplaza "mi-proyecto" con el nombre de tu proyecto)
+git clone https://github.com/javikin/oden.git mi-proyecto
+cd mi-proyecto
 ./install.sh
 
 # En Claude Code, iniciar un nuevo proyecto
