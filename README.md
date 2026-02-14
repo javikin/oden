@@ -84,14 +84,8 @@ debug> priority 1 "critical: production issue"
 
 ## 🏗️ Flujo de Trabajo Completo
 
-```mermaid
-graph LR
-    A[/oden:init] --> B[/oden:architect]
-    B --> C[/oden:prd]
-    C --> D[/oden:epic]
-    D --> E[/oden:work]
-    E --> F[/oden:debug]
-    F --> G[/oden:sync]
+```
+/oden:init → /oden:architect → /oden:prd → /oden:epic → /oden:work → /oden:debug → /oden:sync
 ```
 
 ### 1. Inicialización
