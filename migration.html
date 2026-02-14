@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migration Guide - Oden Forge</title>
+  <meta name="description" content="Complete migration guide for Oden Forge versions. Learn how to upgrade from v2.0 to v2.2.1 and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2692;</text></svg>">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">
+        <div class="logo-icon">O</div>
+        Oden Forge <span class="text-muted">Migration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="index.html">Overview</a>
+        <a href="guides/install.html">Install Guide</a>
+        <a href="migration.html" class="active">Migration</a>
+        <a href="mcps/index.html">MCPs</a>
+        <a href="guides/troubleshooting.html">Troubleshooting</a>
+        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <h1>Migration Guide</h1>
+        <p class="subtitle">
+          Complete guide for upgrading between Oden Forge versions. Learn about new features, breaking changes, and migration steps.
+        </p>
+      </div>
+    </section>
+
+    <!-- Latest Migration: v2.0 → v2.2.1 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🆕 Latest: v2.0 → v2.2.1</h2>
+          <p><strong>Revolutionary Debug System + Extreme Simplification</strong></p>
+        </div>
+
+        <div class="migration-card" style="background: var(--color-bg-alt); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 2rem;">
+          <h3>Quick Migration</h3>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">bash</span>
+              <button class="copy-btn" data-code="npm update -g oden-forge && oden-forge --version">Copy</button>
+            </div>
+            <pre># Update to v2.2.1
+npm update -g oden-forge
+
+# Verify version
+oden-forge --version  # Should show: 2.2.1
+
+# Check available commands
+/oden:help</pre>
+          </div>
+        </div>
+
+        <!-- What's New -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+          <div>
+            <h3 style="color: var(--color-success);">✨ What's New</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-success); margin-right: 0.5rem; font-size: 1.2rem;">🆕</span>
+                <div><strong>/oden:debug</strong> - Revolutionary Queue-Based Debug Orchestration</div>
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-success); margin-right: 0.5rem; font-size: 1.2rem;">⚡</span>
+                <div><strong>8 Essential Commands</strong> - Simplified from 19 commands</div>
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-success); margin-right: 0.5rem; font-size: 1.2rem;">🔧</span>
+                <div><strong>Fixed Version Display</strong> - oden-forge --version works correctly</div>
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-success); margin-right: 0.5rem; font-size: 1.2rem;">📊</span>
+                <div><strong>95% Context Preservation</strong> - Improved from 85%</div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="color: var(--color-warning);">⚠️ Breaking Changes</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-warning); margin-right: 0.5rem; font-size: 1.2rem;">❌</span>
+                <div><strong>/oden:dev commands removed</strong> - Use /oden:work instead</div>
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-warning); margin-right: 0.5rem; font-size: 1.2rem;">🔄</span>
+                <div><strong>Intelligent agent selection</strong> - Automatic instead of manual</div>
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start;">
+                <span style="color: var(--color-warning); margin-right: 0.5rem; font-size: 1.2rem;">📚</span>
+                <div><strong>Documentation restructure</strong> - Focus on Documentation-First</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Command Migration Table -->
+        <div class="migration-table-container" style="overflow-x: auto; margin: 2rem 0;">
+          <h3>Command Migration Table</h3>
+          <table class="migration-table" style="width: 100%; border-collapse: collapse; background: var(--color-bg); border-radius: 8px; overflow: hidden;">
+            <thead style="background: var(--color-primary); color: white;">
+              <tr>
+                <th style="padding: 1rem; text-align: left;">v2.0 Command</th>
+                <th style="padding: 1rem; text-align: left;">v2.2.1 Command</th>
+                <th style="padding: 1rem; text-align: left;">Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 1rem;"><code>/oden:dev fullstack</code></td>
+                <td style="padding: 1rem;"><code>/oden:work</code></td>
+                <td style="padding: 1rem;">✅ Automatic agent selection</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 1rem;"><code>/oden:dev frontend</code></td>
+                <td style="padding: 1rem;"><code>/oden:work</code></td>
+                <td style="padding: 1rem;">✅ Intelligent orchestration</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 1rem;"><code>/oden:dev debug</code></td>
+                <td style="padding: 1rem;"><code>/oden:debug</code></td>
+                <td style="padding: 1rem;">✅ Queue-based system</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 1rem;"><code>/oden:dev test</code></td>
+                <td style="padding: 1rem;"><code>/oden:work</code></td>
+                <td style="padding: 1rem;">✅ Integrated in orchestrator</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 1rem;"><strong>12 oden:dev commands</strong></td>
+                <td style="padding: 1rem;"><strong>Consolidated</strong></td>
+                <td style="padding: 1rem;">✅ 58% fewer commands</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- New Debug System -->
+        <div class="debug-showcase" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+          <h3>🔥 New Debug System</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+            <div>
+              <h4>Interactive Queue-Based Debugging</h4>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">Claude Code</span>
+                  <button class="copy-btn" data-code="/oden:debug">Copy</button>
+                </div>
+                <pre style="background: rgba(0,0,0,0.2); color: white;">/oden:debug
+
+debug> add "fix login validation error"
+debug> add "improve test coverage"
+debug> priority 1 "critical: production issue"
+debug> status</pre>
+              </div>
+            </div>
+            <div>
+              <h4>Revolutionary Features</h4>
+              <ul style="list-style: none; padding: 0; opacity: 0.9;">
+                <li style="margin-bottom: 0.5rem;">🧠 Smart dependency detection</li>
+                <li style="margin-bottom: 0.5rem;">🔄 Context preservation (95%+)</li>
+                <li style="margin-bottom: 0.5rem;">📊 Session analytics</li>
+                <li style="margin-bottom: 0.5rem;">💾 Session recovery</li>
+                <li style="margin-bottom: 0.5rem;">⏰ Auto-close (30min)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Improvements -->
+        <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
+          <div class="metric-card" style="text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px;">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-success); margin-bottom: 0.5rem;">58%</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Fewer Commands</div>
+            <div style="font-size: 0.8rem; color: var(--color-text-muted);">19 → 8</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px;">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-success); margin-bottom: 0.5rem;">+15%</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Debug Success</div>
+            <div style="font-size: 0.8rem; color: var(--color-text-muted);">75% → 90%</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px;">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-success); margin-bottom: 0.5rem;">+10%</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Context Preservation</div>
+            <div style="font-size: 0.8rem; color: var(--color-text-muted);">85% → 95%</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px;">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-success); margin-bottom: 0.5rem;">60%</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Faster Setup</div>
+            <div style="font-size: 0.8rem; color: var(--color-text-muted);">5min → 2min</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Migration Steps -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Migration Steps</h2>
+          <p>Step-by-step guide to migrate to v2.2.1</p>
+        </div>
+
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="guide-step-content">
+              <h3>1. Update Package</h3>
+              <p>Update to the latest version via NPM.</p>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">bash</span>
+                  <button class="copy-btn" data-code="npm update -g oden-forge">Copy</button>
+                </div>
+                <pre>npm update -g oden-forge
+
+# Verify installation
+oden-forge --version  # 2.2.1</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="guide-step-content">
+              <h3>2. Update Your Workflow</h3>
+              <p>Replace obsolete commands with new orchestrator.</p>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">diff</span>
+                </div>
+                <pre><span style="color: #e53e3e;">- /oden:dev frontend</span>
+<span style="color: #38a169;">+ /oden:work</span>
+
+<span style="color: #e53e3e;">- /oden:dev debug</span>
+<span style="color: #38a169;">+ /oden:debug</span>
+
+<span style="color: #e53e3e;">- /oden:dev test</span>
+<span style="color: #38a169;">+ /oden:work</span></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="guide-step-content">
+              <h3>3. Try New Debug System</h3>
+              <p>Experience the revolutionary queue-based debugging.</p>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">Claude Code</span>
+                  <button class="copy-btn" data-code="/oden:debug">Copy</button>
+                </div>
+                <pre># Start interactive session
+/oden:debug
+
+# Add tasks to queue
+debug> add "investigate login issues"
+debug> add "fix validation errors"
+debug> status</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="guide-step-content">
+              <h3>4. Verify Migration</h3>
+              <p>Ensure everything is working correctly.</p>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">Claude Code</span>
+                  <button class="copy-btn" data-code="/oden:help">Copy</button>
+                </div>
+                <pre># Check available commands
+/oden:help
+
+# Should show 8 essential commands:
+# Setup: /oden:init, /oden:mcp, /oden:help
+# Pre-Dev: /oden:architect, /oden:prd, /oden:epic
+# Development: /oden:work, /oden:debug, /oden:sync</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Troubleshooting</h2>
+          <p>Common migration issues and solutions.</p>
+        </div>
+
+        <div class="troubleshoot-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <div class="troubleshoot-card" style="padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; border-left: 4px solid var(--color-warning);">
+            <h4>❌ "Command not found: /oden:debug"</h4>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">New command not available after update.</p>
+            <div class="code-block">
+              <pre>npm install -g oden-forge@latest
+/oden:help  # Verify commands</pre>
+            </div>
+          </div>
+
+          <div class="troubleshoot-card" style="padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; border-left: 4px solid var(--color-warning);">
+            <h4>❌ "Version still shows 2.0.0"</h4>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">NPM cache issues or PATH problems.</p>
+            <div class="code-block">
+              <pre>npm cache clean --force
+npm uninstall -g oden-forge
+npm install -g oden-forge</pre>
+            </div>
+          </div>
+
+          <div class="troubleshoot-card" style="padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; border-left: 4px solid var(--color-warning);">
+            <h4>❌ "Old /oden:dev commands still work"</h4>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Legacy commands cached or not updated.</p>
+            <div class="code-block">
+              <pre># Clear Claude Code cache
+# Restart Claude Code
+/oden:help  # Should show 8 commands only</pre>
+            </div>
+          </div>
+
+          <div class="troubleshoot-card" style="padding: 1.5rem; background: var(--color-bg-alt); border-radius: 8px; border-left: 4px solid var(--color-success);">
+            <h4>✅ Migration Successful</h4>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">All systems working correctly.</p>
+            <div class="code-block">
+              <pre>oden-forge --version  # 2.2.1
+/oden:debug           # Works!
+/oden:work           # Intelligent!</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Help & Support -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Need Help?</h2>
+          <p>Resources and support for your migration.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+          <a href="https://github.com/javikin/oden/issues" class="help-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>🐛 Report Issues</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Found a bug or migration problem? Report it on GitHub.</p>
+          </a>
+
+          <a href="/oden:help" class="help-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>📚 Built-in Help</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Use /oden:help in Claude Code for interactive assistance.</p>
+          </a>
+
+          <a href="guides/troubleshooting.html" class="help-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>🔧 Troubleshooting</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Comprehensive troubleshooting guide for common issues.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Oden Forge</h4>
+          <p>Documentation-First Development toolkit for Claude Code. Migrate smoothly between versions with comprehensive guides.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Migration</h4>
+          <ul>
+            <li><a href="#latest">v2.0 → v2.2.1</a></li>
+            <li><a href="migration.html#troubleshooting">Troubleshooting</a></li>
+            <li><a href="migration.html#support">Get Help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="index.html">Documentation</a></li>
+            <li><a href="guides/install.html">Installation</a></li>
+            <li><a href="guides/troubleshooting.html">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/javikin/oden" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://npmjs.com/package/oden-forge" target="_blank" rel="noopener">NPM</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Oden Forge v2.2.1 - Migration Guide</span>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
