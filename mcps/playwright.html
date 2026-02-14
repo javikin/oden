@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playwright MCP - Oden Forge</title>
+  <meta name="description" content="Playwright MCP for Claude Code - End-to-end testing with screenshots, video, and cross-browser support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2692;</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon">O</div>
+        Oden Forge <span class="text-muted">MCPs</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="../index.html" class="active">MCPs</a>
+        <a href="../templates/index.html">Stack Templates</a>
+        <a href="../guides/install.html">Install Guide</a>
+        <a href="../guides/troubleshooting.html">Troubleshooting</a>
+        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">MCPs</a> / Playwright
+        </div>
+        <h1>
+          <span style="font-size: 1.5rem;">&#x1f3ad;</span>
+          Playwright
+        </h1>
+        <div class="meta">
+          <span class="tag tag-testing">Testing</span>
+          <span>Type: NPX</span>
+          <span>Node.js required</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="detail-content">
+        <div class="detail-main">
+
+          <h2>One-Click Install</h2>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Claude Code</span>
+              <button class="copy-btn" data-code="/oden:init-mcp testing">Copy</button>
+            </div>
+            <pre>/oden:init-mcp testing</pre>
+          </div>
+
+          <h2>Manual Configuration</h2>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">json - .mcp.json</span>
+              <button class="copy-btn" data-code='{"mcpServers":{"playwright":{"command":"npx","args":["-y","@anthropic/mcp-server-playwright@latest"]}}}'>Copy</button>
+            </div>
+            <pre>{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"playwright"</span>: {
+      <span class="key">"command"</span>: <span class="string">"npx"</span>,
+      <span class="key">"args"</span>: [
+        <span class="string">"-y"</span>,
+        <span class="string">"@anthropic/mcp-server-playwright@latest"</span>
+      ]
+    }
+  }
+}</pre>
+          </div>
+
+          <h2>What It Does</h2>
+          <ul>
+            <li>Run end-to-end tests directly from Claude Code</li>
+            <li>Take screenshots and record videos of test runs</li>
+            <li>Test across Chrome, Firefox, and Safari</li>
+            <li>Navigate pages, fill forms, click buttons, and assert results</li>
+            <li>Generate test files for your application</li>
+          </ul>
+
+          <h2>Usage Examples</h2>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Prompt examples</span>
+            </div>
+            <pre><span class="comment"># Visual testing</span>
+<span class="string">"Take a screenshot of my app at localhost:3000/dashboard"</span>
+
+<span class="comment"># E2E flow</span>
+<span class="string">"Test the login flow: go to /login, fill credentials, verify redirect to /dashboard"</span>
+
+<span class="comment"># Generate tests</span>
+<span class="string">"Create Playwright E2E tests for the checkout flow"</span>
+
+<span class="comment"># Regression</span>
+<span class="string">"Navigate to /settings and verify all form fields render correctly"</span></pre>
+          </div>
+
+          <h2>Best Practices</h2>
+          <ul>
+            <li>Make sure your dev server is running before testing</li>
+            <li>Use Playwright for visual verification, not just assertions</li>
+            <li>Combine with <code>/oden:test run</code> for structured testing</li>
+            <li>For simple browser control, consider <a href="chrome-devtools.html">Chrome DevTools</a> instead</li>
+          </ul>
+
+        </div>
+
+        <div class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>Quick Info</h4>
+            <div class="sidebar-card-item">Type: NPX</div>
+            <div class="sidebar-card-item">Category: Testing</div>
+            <div class="sidebar-card-item">Cost: Free</div>
+            <div class="sidebar-card-item">Difficulty: Easy</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Requirements</h4>
+            <div class="sidebar-card-item">Node.js installed</div>
+            <div class="sidebar-card-item">Browser installed</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Related MCPs</h4>
+            <div class="sidebar-card-item"><a href="chrome-devtools.html">Chrome DevTools</a></div>
+            <div class="sidebar-card-item"><a href="context7.html">Context7</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>Oden Forge - Documentation-First Development</span>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

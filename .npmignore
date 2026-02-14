@@ -1,0 +1,20 @@
+# Development files
+.git/
+.github/
+node_modules/
+docs-site/
+temp/
+
+# Project-specific files
+*.log
+.DS_Store
+.env
+.env.local
+
+# Keep only essential files
+!bin/
+!.claude/
+!install.sh
+!README.md
+!MIGRATION.md
+!package.json
