@@ -10,7 +10,9 @@ Actúa como **Technical Architect** para crear/completar el documento `docs/refe
 ## Usage
 
 ```
-/oden:architect
+/oden:architect [módulo]       # Crear technical decisions completo
+/oden:architect spec [módulo]  # Crear especificación detallada
+/oden:architect checklist      # Verificar pre-código
 ```
 
 ## Prerrequisitos
@@ -189,16 +191,69 @@ Al completar, el archivo `docs/reference/technical-decisions.md` debe tener:
 - [ ] Consideraciones de seguridad
 - [ ] Performance targets
 
+---
+
+## SPEC MODE: /oden:architect spec [módulo]
+
+Crear especificaciones técnicas detalladas (800-1200 líneas) para módulos específicos.
+
+### Features:
+- **Máquinas de estado** para entidades complejas
+- **Casos de uso** detallados con ejemplos
+- **Validaciones** y reglas de negocio
+- **Edge cases** y manejo de errores
+- **APIs** y contratos de datos
+- **Testing scenarios**
+
+### Usage:
+```bash
+/oden:architect spec auth        # Módulo de autenticación
+/oden:architect spec orders      # Sistema de pedidos
+/oden:architect spec payments    # Procesamiento de pagos
+```
+
+---
+
+## CHECKLIST MODE: /oden:architect checklist
+
+Verificación automática antes de empezar a codificar.
+
+### Verifica:
+- ✅ technical-decisions.md completo (>2000 líneas)
+- ✅ Schema de BD definido
+- ✅ Interfaces TypeScript creadas
+- ✅ Specs de módulos principales (>800 líneas c/u)
+- ✅ Patrones de arquitectura documentados
+- ✅ Total documentación >8000 líneas
+
+### Output:
+```
+🎯 CHECKLIST PRE-CÓDIGO
+═══════════════════════════
+
+✅ technical-decisions.md: 2,847 líneas
+✅ auth-spec.md: 1,203 líneas
+✅ orders-spec.md: 987 líneas
+❌ payments-spec.md: FALTA
+⚠️  Schema BD: 89% completo
+
+TOTAL: 7,234 / 8,000 líneas mínimas
+
+🚨 BLOQUEADORES:
+- Completar payments-spec.md
+- Finalizar schema de BD
+
+SIGUIENTE: /oden:architect spec payments
+```
+
+---
+
 ## Siguientes Pasos
 
-Después de completar arquitectura:
+Después de completar arquitectura y specs:
 
 ```
-1. /oden:analyze  → Análisis competitivo
-2. /oden:spec     → Especificaciones por módulo
-3. /oden:plan     → Plan de implementación
+1. /oden:prd [feature]     → PRDs con brainstorming
+2. /oden:epic [feature]    → Epic + tasks + work streams
+3. /oden:work [epic]       → Desarrollo con Teams
 ```
-
-## Referencia
-
-Ver agente completo en: `.claude/agents/technical-architect.md`

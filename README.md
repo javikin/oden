@@ -14,60 +14,81 @@ La metodología Oden se basa en tres principios:
 2. **Design Sprint Adaptado**: Diseño rápido → Validación → Iteración
 3. **Entrega incremental**: Valor tangible cada semana
 
-## Quick Start
+## 🚀 Instalación
 
+### Método 1: NPM (Recomendado)
 ```bash
-# Clonar e instalar (reemplaza "mi-proyecto" con el nombre de tu proyecto)
-git clone https://github.com/javikin/oden.git mi-proyecto
-cd mi-proyecto
-./install.sh
+# Instalación global
+npm install -g oden-forge
 
-# En Claude Code, iniciar un nuevo proyecto
+# Uso inmediato en cualquier proyecto
+cd tu-proyecto
+claude-code
 /oden:init
 ```
 
-## Comandos Disponibles
+### Método 2: Instalación Directa
+```bash
+# One-liner desde GitHub
+curl -fsSL https://raw.githubusercontent.com/javikin/oden-forge/main/install-direct.sh | bash
 
-### Inicialización y Setup
-| Comando | Descripción |
-|---------|-------------|
-| `/oden:init` | Wizard interactivo para crear un proyecto desde cero |
-| `/oden:init-agents [cat]` | Instalar agentes de desarrollo (core, frontend, backend, mobile, devops, data) |
-| `/oden:init-mcp [cat]` | Instalar MCPs recomendados (essential, design, backend, testing, mobile, devops) |
-| `/oden:help` | Mostrar ayuda y guías |
+# O descargar y ejecutar
+wget https://raw.githubusercontent.com/javikin/oden-forge/main/install-direct.sh
+chmod +x install-direct.sh
+./install-direct.sh
+```
 
-### Fase Pre-Desarrollo
-| Comando | Descripción |
-|---------|-------------|
-| `/oden:architect` | Crear technical-decisions.md (arquitectura, DB schema, stack) |
-| `/oden:analyze` | Análisis competitivo y requisitos de negocio |
-| `/oden:spec [módulo]` | Crear especificaciones detalladas por módulo (800+ líneas) |
-| `/oden:plan` | Plan de implementación semana por semana |
-| `/oden:checklist` | Verificar que todo esté listo antes de codificar |
+### Método 3: Git Clone (Legacy)
+```bash
+git clone https://github.com/javikin/oden-forge.git
+cd oden-forge
+./install.sh
+```
 
-### Fase Desarrollo
-| Comando | Descripción |
-|---------|-------------|
-| `/oden:daily` | Registrar progreso diario (DAY_X_COMPLETED.md) |
-| `/oden:dev [agent]` | Invocar agentes de desarrollo (ver abajo) |
-| `/oden:review` | Code review automático antes de PR |
-| `/oden:test [sub]` | Testing - estrategia, ejecución, análisis |
-| `/oden:debug [sub]` | Debugging - analizar errores y soluciones |
-| `/oden:research [topic]` | Investigación técnica |
-| `/oden:git [sub]` | Git workflow - branches, PRs, gestión |
+### ✅ Verificar Instalación
+```bash
+# Si instalaste con NPM
+oden-forge status
 
-### Sincronización con GitHub (integración CCPM)
-| Comando | Descripción |
-|---------|-------------|
-| `/oden:sync setup` | Configurar proyecto para sync con GitHub |
-| `/oden:sync prd [nombre]` | Crear PRD (Product Requirement Document) |
-| `/oden:sync epic [nombre]` | Convertir PRD a Epic técnico |
-| `/oden:sync tasks [nombre]` | Descomponer Epic en tasks |
-| `/oden:sync github [nombre]` | Push Epic y tasks a GitHub como issues |
-| `/oden:sync start [nombre]` | Iniciar desarrollo en epic (worktree) |
-| `/oden:sync issue [#]` | Trabajar en un issue específico |
-| `/oden:sync close [#]` | Cerrar issue completado |
-| `/oden:sync status` | Ver estado de sincronización |
+# Si no funciona (común con ASDF/NVM):
+npx oden-forge status
+
+# En Claude Code (todos los métodos)
+/oden:help
+```
+
+### 🔧 Troubleshooting
+
+#### ❌ "command not found: oden-forge"
+**Causa**: Usas ASDF, NVM u otro Node version manager.
+
+**Solución 1 (Rápida)**:
+```bash
+# Usar npx (funciona siempre)
+npx oden-forge status
+npx oden-forge migrate
+```
+
+**Solución 2 (Permanente)**:
+```bash
+# Arreglar PATH
+echo 'export PATH="$(npm config get prefix)/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+oden-forge status  # Ahora debería funcionar
+```
+
+## 🚀 Comandos Esenciales (Solo 8)
+
+| Comando | Descripción | Funcionalidad |
+|---------|-------------|---------------|
+| `/oden:init` | **Wizard completo** | Setup + agentes + MCPs + configuración |
+| `/oden:architect` | **Decisiones técnicas** | Architecture + specs + DB schema + checklist |
+| `/oden:prd` | **PRD inteligente** | Product requirements con brainstorming |
+| `/oden:epic` | **Epic + Tasks** | Work streams + descomposición automática |
+| `/oden:work` | **🔥 Orquestador** | Desarrollo con Teams + debug + test + research |
+| `/oden:sync` | **GitHub nativo** | Issues + branches + PRs (sin CCPM) |
+| `/oden:mcp` | **Gestión MCPs** | Install + recommend + manage |
+| `/oden:help` | **Ayuda completa** | Guías + docs + troubleshooting |
 
 ---
 

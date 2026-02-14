@@ -1,279 +1,286 @@
 ---
 allowed-tools: Bash, Read, Write, LS, Task
-description: Sincronizar proyecto con GitHub usando flujo CCPM
+description: Sincronizar epic y tasks con GitHub Issues (nativo, sin CCPM)
 ---
 
-# Oden Forge - Sync
+# Sync - GitHub Issues Synchronization
 
-Sincroniza el proyecto con GitHub integrando con los comandos de CCPM.
+Sincroniza epics y tasks locales con GitHub Issues. Comando nativo sin dependencia de CCPM.
 
 ## Usage
-
 ```
-/oden:sync [subcommand]
+/oden:sync <feature_name> [subcommand]
+/oden:sync status
 ```
 
-## Subcomandos
+## Subcommands
 
-### `/oden:sync setup`
+- `/oden:sync <name>` - Full sync: push epic + tasks to GitHub, create branch
+- `/oden:sync <name> push` - Same as above (explicit)
+- `/oden:sync <name> update` - Update existing GitHub issues from local changes
+- `/oden:sync status` - Show sync status of all epics
 
-Configura el proyecto para sincronización con GitHub.
+## Preflight
 
-**Verifica:**
-- Git repo inicializado
-- Remote origin configurado
-- GitHub CLI autenticado
-- Labels creados en repo
-
-**Ejecuta:**
+### Repository Protection
 ```bash
-# Verificar git repo
-git remote get-url origin || echo "❌ No remote. Run: git remote add origin <url>"
+remote_url=$(git remote get-url origin 2>/dev/null || echo "")
+if [[ "$remote_url" == *"automazeio/ccpm"* ]] || [[ "$remote_url" == *"automazeio/ccpm.git"* ]]; then
+  echo "Cannot sync to CCPM template repository!"
+  echo "Update remote: git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO.git"
+  exit 1
+fi
+```
 
-# Verificar gh auth
-gh auth status || echo "❌ Not authenticated. Run: gh auth login"
+### Validation
+1. **Epic exists**: Check `.claude/epics/$ARGUMENTS/epic.md`
+   - If not found: "Epic not found. Create it: /oden:prd $ARGUMENTS && /oden:epic $ARGUMENTS && /oden:tasks $ARGUMENTS"
 
-# Crear labels si no existen
+2. **Tasks exist**: Check for numbered task files in `.claude/epics/$ARGUMENTS/`
+   - If none found: "No tasks found. Create them: /oden:tasks $ARGUMENTS"
+
+3. **Git remote**: Verify origin is configured
+   - If not: "No remote. Run: git remote add origin <url>"
+
+## Instructions
+
+### Detect Repository
+```bash
+remote_url=$(git remote get-url origin 2>/dev/null || echo "")
+REPO=$(echo "$remote_url" | sed 's|.*github.com[:/]||' | sed 's|\.git$||')
+[ -z "$REPO" ] && REPO="user/repo"
+```
+
+### Setup Labels
+Create labels if they don't exist (silently):
+```bash
 gh label create "epic" --color "0E8A16" --description "Epic issue" 2>/dev/null || true
 gh label create "task" --color "1D76DB" --description "Task issue" 2>/dev/null || true
 gh label create "feature" --color "A2EEEF" --description "New feature" 2>/dev/null || true
-gh label create "bug" --color "D73A4A" --description "Bug fix" 2>/dev/null || true
 ```
 
 ---
 
-### `/oden:sync prd [nombre]`
+## Full Sync Flow (`/oden:sync <name>`)
 
-Crea o actualiza un PRD (Product Requirement Document).
+### Step 1: Create Epic Issue
 
-**Integra con CCPM:**
-```
-/pm:prd-new {nombre}
-```
+Strip frontmatter and prepare body:
+```bash
+# Extract content without frontmatter
+sed '1,/^---$/d; 1,/^---$/d' .claude/epics/$ARGUMENTS/epic.md > /tmp/epic-body-raw.md
 
-**Flujo:**
-1. Brainstorming sobre el feature
-2. Crear PRD en `.claude/prds/{nombre}.md`
-3. Incluir: problema, user stories, requisitos, éxito
+# Remove "## Tasks Created" section (will be auto-generated from sub-issues)
+awk '
+  /^## Tasks Created/ { skip=1; next }
+  /^## / && skip { skip=0 }
+  !skip { print }
+' /tmp/epic-body-raw.md > /tmp/epic-body.md
 
----
-
-### `/oden:sync epic [nombre]`
-
-Convierte PRD a Epic técnico.
-
-**Integra con CCPM:**
-```
-/pm:prd-parse {nombre}
-```
-
-**Flujo:**
-1. Lee PRD existente
-2. Análisis técnico
-3. Crea epic en `.claude/epics/{nombre}/epic.md`
-
----
-
-### `/oden:sync tasks [nombre]`
-
-Descompone Epic en tasks individuales.
-
-**Integra con CCPM:**
-```
-/pm:epic-decompose {nombre}
+# Create epic issue
+epic_number=$(gh issue create \
+  --repo "$REPO" \
+  --title "Epic: $ARGUMENTS" \
+  --body-file /tmp/epic-body.md \
+  --label "epic,epic:$ARGUMENTS,feature" \
+  --json number -q .number)
 ```
 
-**Flujo:**
-1. Lee epic existente
-2. Crea tasks en `.claude/epics/{nombre}/001.md`, `002.md`, etc.
-3. Identifica dependencias y paralelismo
+### Step 2: Create Task Sub-Issues
 
----
-
-### `/oden:sync github [nombre]`
-
-Sincroniza con GitHub (crea issues).
-
-**Integra con CCPM:**
-```
-/pm:epic-sync {nombre}
+Check for gh-sub-issue extension:
+```bash
+if gh extension list | grep -q "yahsan2/gh-sub-issue"; then
+  use_subissues=true
+else
+  use_subissues=false
+fi
 ```
 
-**Flujo:**
-1. Crea issue de Epic en GitHub
-2. Crea sub-issues para cada task
-3. Aplica labels: `epic`, `task`, `epic:{nombre}`
-4. Renombra archivos locales con issue numbers
-5. Crea worktree para desarrollo
+For each task file:
+```bash
+for task_file in .claude/epics/$ARGUMENTS/[0-9][0-9][0-9].md; do
+  [ -f "$task_file" ] || continue
 
-**Output:**
-```
-✅ Synced to GitHub
-  - Epic: #123
-  - Tasks: 5 sub-issues created
-  - Worktree: ../epic-{nombre}
+  task_name=$(grep '^name:' "$task_file" | sed 's/^name: *//')
+  sed '1,/^---$/d; 1,/^---$/d' "$task_file" > /tmp/task-body.md
 
-Next: /oden:sync start {nombre}
-```
+  if [ "$use_subissues" = true ]; then
+    task_number=$(gh sub-issue create \
+      --parent "$epic_number" \
+      --title "$task_name" \
+      --body-file /tmp/task-body.md \
+      --label "task,epic:$ARGUMENTS" \
+      --json number -q .number)
+  else
+    task_number=$(gh issue create \
+      --repo "$REPO" \
+      --title "$task_name" \
+      --body-file /tmp/task-body.md \
+      --label "task,epic:$ARGUMENTS" \
+      --json number -q .number)
+  fi
 
----
-
-### `/oden:sync start [nombre]`
-
-Inicia desarrollo en el epic.
-
-**Integra con CCPM:**
-```
-/pm:epic-start {nombre}
-```
-
-**Flujo:**
-1. Cambia al worktree del epic
-2. Muestra tasks disponibles
-3. Puede iniciar agentes paralelos para tasks independientes
-
----
-
-### `/oden:sync issue [número]`
-
-Trabaja en un issue específico.
-
-**Integra con CCPM:**
-```
-/pm:issue-start {número}
+  echo "$task_file:$task_number" >> /tmp/task-mapping.txt
+done
 ```
 
-**Flujo:**
-1. Lee el issue
-2. Crea branch para el issue
-3. Inicia desarrollo según spec
+**For 5+ tasks**: Use Task tool for parallel creation in batches of 3-4.
 
----
+### Step 3: Rename Files and Update References
 
-### `/oden:sync close [número]`
-
-Cierra un issue completado.
-
-**Integra con CCPM:**
-```
-/pm:issue-close {número}
+Build old-to-new mapping:
+```bash
+> /tmp/id-mapping.txt
+while IFS=: read -r task_file task_number; do
+  old_num=$(basename "$task_file" .md)
+  echo "$old_num:$task_number" >> /tmp/id-mapping.txt
+done < /tmp/task-mapping.txt
 ```
 
-**Flujo:**
-1. Verifica que está completo
-2. Actualiza estado local
-3. Cierra issue en GitHub
+Rename and update references:
+```bash
+repo_name=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
----
+while IFS=: read -r task_file task_number; do
+  new_name="$(dirname "$task_file")/${task_number}.md"
+  content=$(cat "$task_file")
 
-### `/oden:sync status`
+  # Update depends_on and conflicts_with references
+  while IFS=: read -r old_num new_num; do
+    content=$(echo "$content" | sed "s/\b$old_num\b/$new_num/g")
+  done < /tmp/id-mapping.txt
 
-Muestra estado de sincronización.
+  echo "$content" > "$new_name"
+  [ "$task_file" != "$new_name" ] && rm "$task_file"
 
-**Integra con CCPM:**
-```
-/pm:status
-```
-
-**Output:**
-```
-╔══════════════════════════════════════════════════════════════╗
-║                    SYNC STATUS                               ║
-╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║  EPICS ACTIVOS:                                              ║
-║  ├─ auth (#123) - 3/5 tasks complete                        ║
-║  └─ payments (#130) - 0/4 tasks complete                    ║
-║                                                              ║
-║  ISSUES IN PROGRESS:                                         ║
-║  ├─ #124: Login form                                         ║
-║  └─ #125: Password reset                                     ║
-║                                                              ║
-║  SYNC STATUS:                                                ║
-║  ├─ Local → GitHub: ✅ Up to date                           ║
-║  └─ GitHub → Local: ✅ Up to date                           ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
+  # Update frontmatter
+  github_url="https://github.com/$repo_name/issues/$task_number"
+  sed -i.bak "/^github:/c\github: $github_url" "$new_name"
+  sed -i.bak "/^updated:/c\updated: $current_date" "$new_name"
+  rm "${new_name}.bak"
+done < /tmp/task-mapping.txt
 ```
 
----
+### Step 4: Update Epic with Task List (fallback without sub-issues)
 
-## Flujo Completo Oden + CCPM
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    FLUJO COMPLETO                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  1. INICIALIZAR PROYECTO                                    │
-│     /oden:init                                              │
-│     → Wizard de proyecto                                    │
-│     → Estructura de docs                                    │
-│     → Stack tecnológico                                     │
-│                                                             │
-│  2. DOCUMENTACIÓN (Metodología Oden)                        │
-│     /oden:architect   → technical-decisions.md              │
-│     /oden:analyze     → competitive-analysis.md             │
-│     /oden:spec auth   → auth-spec.md                        │
-│     /oden:plan        → implementation-plan.md              │
-│     /oden:checklist   → ✅ Ready                            │
-│                                                             │
-│  3. CREAR FEATURE (CCPM)                                    │
-│     /oden:sync prd auth      → Crear PRD                    │
-│     /oden:sync epic auth     → Crear Epic                   │
-│     /oden:sync tasks auth    → Descomponer tasks            │
-│     /oden:sync github auth   → Push a GitHub                │
-│                                                             │
-│  4. DESARROLLO                                              │
-│     /oden:sync start auth    → Iniciar desarrollo           │
-│     /oden:dev fullstack      → Implementar                  │
-│     /oden:test run           → Testing                      │
-│     /oden:daily              → Log diario                   │
-│                                                             │
-│  5. COMPLETAR                                               │
-│     /oden:sync close #123    → Cerrar issue                 │
-│     /oden:git pr             → Create PR                    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+If NOT using gh-sub-issue, add task list to epic issue body:
+```bash
+if [ "$use_subissues" = false ]; then
+  gh issue view ${epic_number} --json body -q .body > /tmp/epic-body.md
+  # Append task checklist
+  echo "" >> /tmp/epic-body.md
+  echo "## Tasks" >> /tmp/epic-body.md
+  while IFS=: read -r task_file task_number; do
+    task_name=$(grep '^name:' "$(dirname "$task_file")/${task_number}.md" | sed 's/^name: *//')
+    echo "- [ ] #${task_number} ${task_name}" >> /tmp/epic-body.md
+  done < /tmp/task-mapping.txt
+  gh issue edit ${epic_number} --body-file /tmp/epic-body.md
+fi
 ```
 
----
-
-## Integración con CCPM
-
-Oden Forge **no duplica** funcionalidad de CCPM. En su lugar:
-
-| Oden Forge | CCPM Subyacente |
-|------------|-----------------|
-| `/oden:sync prd` | `/pm:prd-new` |
-| `/oden:sync epic` | `/pm:prd-parse` |
-| `/oden:sync tasks` | `/pm:epic-decompose` |
-| `/oden:sync github` | `/pm:epic-sync` |
-| `/oden:sync start` | `/pm:epic-start` |
-| `/oden:sync issue` | `/pm:issue-start` |
-| `/oden:sync close` | `/pm:issue-close` |
-| `/oden:sync status` | `/pm:status` |
-
-**Beneficio:** Si ya usas CCPM, puedes usar sus comandos directamente.
-Oden Forge solo agrega el wrapper para consistencia de namespace.
-
----
-
-## Requisitos
-
-1. **CCPM instalado** en `~/.claude/commands/pm/`
-2. **GitHub CLI** (`gh`) instalado y autenticado
-3. **Git** repo inicializado con remote
-
-## Verificar Requisitos
+### Step 5: Update Local Epic File
 
 ```bash
-# Verificar CCPM
-ls ~/.claude/commands/pm/epic-sync.md && echo "✅ CCPM installed"
+epic_url="https://github.com/$repo_name/issues/$epic_number"
+current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-# Verificar gh
-gh auth status && echo "✅ GitHub CLI ready"
-
-# Verificar git remote
-git remote get-url origin && echo "✅ Git remote configured"
+# Update frontmatter
+sed -i.bak "/^github:/c\github: $epic_url" .claude/epics/$ARGUMENTS/epic.md
+sed -i.bak "/^updated:/c\updated: $current_date" .claude/epics/$ARGUMENTS/epic.md
+rm .claude/epics/$ARGUMENTS/epic.md.bak
 ```
+
+Update "## Tasks Created" section with real issue numbers.
+
+### Step 6: Create Mapping File
+
+Create `.claude/epics/$ARGUMENTS/github-mapping.md`:
+```markdown
+# GitHub Issue Mapping
+
+Epic: #{epic_number} - https://github.com/{repo}/issues/{epic_number}
+
+Tasks:
+- #{task_number}: {task_name} - https://github.com/{repo}/issues/{task_number}
+- ...
+
+Synced: {current_datetime}
+```
+
+### Step 7: Create Branch
+
+Follow `/rules/branch-operations.md`:
+```bash
+git checkout main && git pull origin main
+git checkout -b epic/$ARGUMENTS
+git push -u origin epic/$ARGUMENTS
+```
+
+### Output
+
+```
+Synced to GitHub
+  Epic: #{epic_number}
+  Tasks: {count} issues created
+  Labels: epic, task, epic:{name}
+  Files renamed: 001.md -> {issue_id}.md
+  Branch: epic/$ARGUMENTS
+
+Next: /oden:epic-start $ARGUMENTS
+View: https://github.com/{repo}/issues/{epic_number}
+```
+
+---
+
+## Update Flow (`/oden:sync <name> update`)
+
+For syncing local changes to existing GitHub issues:
+
+1. Read github-mapping.md for issue numbers
+2. For each task with local changes since last sync:
+   - Update GitHub issue body if task description changed
+   - Add progress comment if updates exist
+3. Update epic progress on GitHub
+4. Update local sync timestamps
+
+---
+
+## Status Flow (`/oden:sync status`)
+
+Scan all epics and show sync state:
+
+```
+SYNC STATUS
+
+Epics:
+  {name} (#{number}) - {closed}/{total} tasks | {progress}%
+  {name} (#{number}) - {closed}/{total} tasks | {progress}%
+
+Issues in progress:
+  #{number}: {title}
+  #{number}: {title}
+
+Local only (not synced):
+  {name} - Run: /oden:sync {name}
+```
+
+---
+
+## Error Handling
+
+Follow `/rules/github-operations.md` for GitHub CLI errors.
+
+If any issue creation fails:
+- Report what succeeded and what failed
+- Don't attempt rollback (partial sync is fine)
+- Suggest: "Retry failed items with: /oden:sync $ARGUMENTS update"
+
+## Important Notes
+
+- **No CCPM dependency** - this is fully native
+- Always check remote origin before GitHub writes
+- Get REAL datetime: `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+- Update frontmatter only after successful creation
+- Clean up temp files after operations

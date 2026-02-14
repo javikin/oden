@@ -12,32 +12,29 @@ Sistema de skills para crear proyectos profesionales usando la metodología Docu
 - `/oden:init` - Wizard interactivo para crear proyecto
 - `/oden:init-agents` - Instalar agentes de desarrollo
 - `/oden:init-mcp` - Instalar MCPs recomendados
+- `/oden:mcp [sub]` - Gestionar MCPs (install, status, update, recommend)
 - `/oden:help` - Mostrar ayuda
 
 ### Pre-Desarrollo (ejecutar en orden)
 1. `/oden:architect` - Technical decisions + DB schema
-2. `/oden:analyze` - Análisis competitivo + user stories
-3. `/oden:spec [módulo]` - Especificación de módulo
-4. `/oden:plan` - Plan de implementación
-5. `/oden:checklist` - Verificar todo listo
+2. `/oden:spec [módulo]` - Especificación de módulo
+3. `/oden:checklist` - Verificar todo listo
 
-### GitHub Sync (integración CCPM)
-- `/oden:sync prd [nombre]` - Crear PRD
-- `/oden:sync epic [nombre]` - PRD → Epic técnico
-- `/oden:sync tasks [nombre]` - Descomponer en tasks
-- `/oden:sync github [nombre]` - Push a GitHub issues
-- `/oden:sync start [nombre]` - Iniciar desarrollo
-- `/oden:sync issue [#]` - Trabajar en issue
-- `/oden:sync close [#]` - Cerrar issue
-- `/oden:sync status` - Ver estado
+### Feature Pipeline
+1. `/oden:prd [nombre]` - Crear PRD con brainstorming inteligente
+2. `/oden:epic [nombre]` - PRD -> Epic tecnico con work streams
+3. `/oden:tasks [nombre]` - Descomponer Epic en issues
+4. `/oden:sync [nombre]` - Sincronizar con GitHub Issues
+5. `/oden:sync status` - Ver estado de sincronizacion
 
 ### Durante Desarrollo
-- `/oden:dev [agent]` - Invocar agente desarrollo
+- `/oden:work [epic/issue]` - Orquestador inteligente con Teams (auto/config/smart)
 - `/oden:test [sub]` - Testing
 - `/oden:debug [sub]` - Debugging
 - `/oden:git [sub]` - Git workflow
 - `/oden:research [topic]` - Investigación técnica
 - `/oden:daily` - Registrar progreso del día
+- `/oden:review [scope]` - Code review antes de merge
 
 ## Reglas de Oro
 

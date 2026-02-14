@@ -1,0 +1,76 @@
+{
+  "name": "oden-forge",
+  "version": "2.1.0",
+  "description": "Documentation-First Development Toolkit for Claude Code - Create professional projects with built-in methodology, Teams orchestration, and MCP management",
+  "keywords": [
+    "claude-code",
+    "documentation-first",
+    "development-toolkit",
+    "project-management",
+    "skills",
+    "mcp",
+    "teams"
+  ],
+  "homepage": "https://javikin.github.io/oden-forge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javikin/oden-forge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/javikin/oden-forge/issues"
+  },
+  "author": {
+    "name": "javikin",
+    "url": "https://github.com/javikin"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bin": {
+    "oden-forge": "bin/oden-forge.js",
+    "oden-install": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    ".claude/",
+    "install.sh",
+    "README.md",
+    "MIGRATION.md"
+  ],
+  "scripts": {
+    "postinstall": "node bin/post-install.js",
+    "preuninstall": "node bin/pre-uninstall.js",
+    "test": "echo \"No tests yet\" && exit 0",
+    "docs:dev": "cd docs-site && python3 -m http.server 8000",
+    "docs:deploy": "gh-pages -d docs-site"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.4.1",
+    "inquirer": "^8.2.5",
+    "fs-extra": "^11.1.1",
+    "semver": "^7.5.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  },
+  "claude-code": {
+    "type": "skills-package",
+    "install-location": "~/.claude/",
+    "commands": [
+      "oden:init",
+      "oden:architect",
+      "oden:prd",
+      "oden:epic",
+      "oden:tasks",
+      "oden:work",
+      "oden:sync",
+      "oden:mcp",
+      "oden:help"
+    ],
+    "version-check": true,
+    "auto-migrate": true
+  }
+}

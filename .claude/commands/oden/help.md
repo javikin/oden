@@ -38,27 +38,27 @@ Topics disponibles:
 ║  ├─ /oden:init         Wizard para crear proyecto            ║
 ║  ├─ /oden:init-agents  Instalar agentes de desarrollo        ║
 ║  ├─ /oden:init-mcp     Instalar MCPs recomendados            ║
+║  ├─ /oden:mcp [sub]    Gestionar MCPs (install/status/etc)   ║
 ║  └─ /oden:help         Esta ayuda                            ║
 ║                                                              ║
 ║  Pre-Desarrollo (ejecutar en orden):                         ║
 ║  ├─ /oden:architect    Technical decisions + DB schema       ║
-║  ├─ /oden:analyze      Análisis competitivo + user stories   ║
 ║  ├─ /oden:spec [mod]   Especificación de módulo              ║
-║  ├─ /oden:plan         Plan de implementación                ║
 ║  └─ /oden:checklist    Verificar todo listo                  ║
 ║                                                              ║
-║  GitHub Sync (CCPM):                                         ║
-║  ├─ /oden:sync prd     Crear PRD                             ║
-║  ├─ /oden:sync epic    PRD → Epic técnico                    ║
-║  ├─ /oden:sync tasks   Descomponer en tasks                  ║
-║  ├─ /oden:sync github  Push a GitHub issues                  ║
-║  └─ /oden:sync status  Ver estado sync                       ║
+║  Feature Pipeline (nativo):                                  ║
+║  ├─ /oden:prd [name]   Crear PRD con brainstorming           ║
+║  ├─ /oden:epic [name]  PRD -> Epic con work streams          ║
+║  ├─ /oden:tasks [name] Epic -> Issues desglosados            ║
+║  └─ /oden:sync [sub]   Sincronizar con GitHub Issues         ║
 ║                                                              ║
 ║  Durante Desarrollo:                                         ║
-║  ├─ /oden:dev [agent]  Invocar agente desarrollo             ║
+║  ├─ /oden:work [epic]  Orquestador con Teams (auto/config)   ║
 ║  ├─ /oden:test [sub]   Testing                               ║
 ║  ├─ /oden:debug [sub]  Debugging                             ║
 ║  ├─ /oden:git [sub]    Git workflow                          ║
+║  ├─ /oden:review       Code review antes de merge            ║
+║  ├─ /oden:research     Investigación técnica                 ║
 ║  └─ /oden:daily        Registrar progreso del día            ║
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
@@ -72,21 +72,19 @@ Topics disponibles:
 ║                                                              ║
 ║  PRE-DEV:                                                    ║
 ║  /oden:architect           → Arquitectura                    ║
-║  /oden:analyze             → Análisis                        ║
 ║  /oden:spec auth           → Specs por módulo                ║
-║  /oden:plan                → Plan                            ║
 ║  /oden:checklist           → Verificar                       ║
 ║                                                              ║
-║  FEATURES (sync con GitHub):                                 ║
-║  /oden:sync prd auth       → Crear PRD                       ║
-║  /oden:sync epic auth      → Crear Epic                      ║
-║  /oden:sync tasks auth     → Crear Tasks                     ║
-║  /oden:sync github auth    → Push a GitHub                   ║
+║  FEATURES (pipeline nativo):                                 ║
+║  /oden:prd auth            → Crear PRD                       ║
+║  /oden:epic auth           → PRD -> Epic tecnico             ║
+║  /oden:tasks auth          → Epic -> Issues                  ║
+║  /oden:sync auth           → Push a GitHub Issues            ║
 ║                                                              ║
 ║  DESARROLLO:                                                 ║
-║  /oden:sync start auth     → Iniciar epic                    ║
-║  /oden:dev fullstack       → Implementar                     ║
+║  /oden:work epic/auth      → Orquestador con Teams           ║
 ║  /oden:test run            → Testing                         ║
+║  /oden:review branch       → Code review                     ║
 ║  /oden:daily               → Log diario                      ║
 ║  /oden:git pr              → Create PR                       ║
 ║                                                              ║
@@ -133,35 +131,35 @@ Topics disponibles:
 ║  ├─ Diseñar schema de BD                                     ║
 ║  └─ Documentar arquitectura (2000+ líneas)                   ║
 ║                                                              ║
-║  Día 3-4: /oden:analyze                                      ║
-║  ├─ Analizar 3-5 competidores                                ║
-║  ├─ Crear user personas                                      ║
-║  ├─ Escribir user stories                                    ║
-║  └─ Priorizar features                                       ║
-║                                                              ║
-║  Día 5-8: /oden:spec (por módulo)                            ║
+║  Día 3-7: /oden:spec (por módulo)                            ║
 ║  ├─ Spec de auth (800+ líneas)                               ║
 ║  ├─ Spec de módulo principal                                 ║
 ║  └─ Specs de otros módulos                                   ║
 ║                                                              ║
-║  Día 9-10: /oden:plan                                        ║
-║  ├─ Plan semana por semana                                   ║
-║  ├─ Tareas con estimaciones                                  ║
-║  ├─ Identificar dependencias                                 ║
-║  └─ Definir milestones                                       ║
-║                                                              ║
-║  Final: /oden:checklist                                      ║
-║  └─ Verificar TODO completo                                  ║
+║  Día 9: /oden:checklist                                      ║
+║  └─ Verificar TODO completo antes de codificar               ║
 ║                                                              ║
 ║  ════════════════════════════════════════════════════════════║
 ║                                                              ║
-║  FASE 2: IMPLEMENTACIÓN (8-18 semanas)                       ║
+║  FEATURE PIPELINE (por cada feature)                         ║
+║  ════════════════════════════════════                        ║
+║                                                              ║
+║  /oden:prd auth         → Crear PRD con brainstorming        ║
+║  /oden:epic auth        → PRD -> Epic con work streams       ║
+║  /oden:tasks auth       → Epic -> Issues individuales        ║
+║  /oden:sync auth        → Push a GitHub Issues               ║
+║                                                              ║
+║  ════════════════════════════════════════════════════════════║
+║                                                              ║
+║  FASE 2: IMPLEMENTACION (8-18 semanas)                       ║
 ║  ═════════════════════════════════════                       ║
 ║                                                              ║
-║  Cada día:                                                   ║
-║  ├─ Trabajar según plan                                      ║
+║  /oden:work epic/auth   → Orquestador con Teams              ║
+║                                                              ║
+║  Cada dia:                                                   ║
+║  ├─ Trabajar segun plan                                      ║
 ║  ├─ Seguir specs al pie de la letra                          ║
-║  └─ /oden:daily al final del día                             ║
+║  └─ /oden:daily al final del dia                             ║
 ║                                                              ║
 ║  Cada semana:                                                ║
 ║  ├─ Review de progreso                                       ║
@@ -217,15 +215,12 @@ Topics disponibles:
 ║                                                              ║
 ║  ──────────────────────────────────────────────────────────  ║
 ║                                                              ║
-║  USO VÍA /oden:dev                                           ║
-║  ─────────────────                                           ║
-║  /oden:dev fullstack    → Implementación general             ║
-║  /oden:dev frontend     → Componentes React/UI               ║
-║  /oden:dev backend      → APIs y servicios                   ║
-║  /oden:dev db           → Schema de BD                       ║
-║  /oden:dev test         → Testing                            ║
-║  /oden:dev debug        → Debugging                          ║
-║  /oden:dev review       → Code review                        ║
+║  USO VIA /oden:work (auto-selecciona agentes)                ║
+║  ──────────────────────────────────────────                  ║
+║  /oden:work epic/auth   → Orquesta agentes automaticamente   ║
+║  /oden:test run         → Testing                            ║
+║  /oden:debug            → Debugging                          ║
+║  /oden:review           → Code review                        ║
 ║                                                              ║
 ║  ──────────────────────────────────────────────────────────  ║
 ║                                                              ║
@@ -257,7 +252,6 @@ Topics disponibles:
 ║  R: NO recomendado. Cada paso construye sobre el anterior.   ║
 ║     Si saltas:                                               ║
 ║     • Sin architect → Decisiones inconsistentes              ║
-║     • Sin analyze → Features incorrectas                     ║
 ║     • Sin specs → Implementación ambigua                     ║
 ║     • Sin plan → Caos y retrabajo                            ║
 ║                                                              ║

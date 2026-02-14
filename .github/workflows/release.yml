@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Create tarball
+        run: npm pack
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            oden-forge-*.tgz
+            install-direct.sh
+            get.sh
+          body: |
+            ## 🎉 Oden Forge 2.0
+
+            ### Instalación
+
+            #### NPM (Recomendado)
+            ```bash
+            npm install -g oden-forge
+            ```
+
+            #### Instalación Directa
+            ```bash
+            curl -fsSL https://raw.githubusercontent.com/javikin/oden-forge/main/install-direct.sh | bash
+            ```
+
+            #### Descargar Tarball
+            Descarga `oden-forge-*.tgz` y extrae manualmente.
+
+            ### Características
+
+            - ✅ **67% menos comandos** (57 → 19)
+            - ✅ **Teams integrado** para desarrollo paralelo
+            - ✅ **CCPM nativo** (sin dependencias externas)
+            - ✅ **Gestión de MCPs** con one-click install
+            - ✅ **Migración automática** desde v1
+            - ✅ **GitHub Pages** con documentación profesional
+
+            ### Uso
+
+            ```bash
+            # En cualquier proyecto
+            claude-code
+            /oden:init
+            ```
+
+            📚 **Documentación**: https://javikin.github.io/oden-forge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to NPM
+        if: startsWith(github.ref, 'refs/tags/')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

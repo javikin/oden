@@ -11,6 +11,8 @@ Wizard interactivo que guía al usuario a crear un proyecto profesional siguiend
 
 ```
 /oden:init [nombre-proyecto]
+/oden:init agents [category]  # Instalar agentes especializados
+/oden:init mcp [category]     # Instalar MCPs recomendados
 ```
 
 ## Filosofía Core
@@ -493,3 +495,52 @@ Solo mostrar la recomendación y justificación breve, sin explicaciones básica
 
 ### Si el usuario rechaza la recomendación:
 Preguntar qué stack prefiere y por qué, luego adaptar el flujo.
+
+---
+
+## AGENTS MODE: /oden:init agents [category]
+
+Instala agentes especializados para desarrollo.
+
+### Categories Disponibles:
+- `core` - Agentes esenciales (fullstack-developer, code-reviewer, debugger)
+- `frontend` - Frontend/UI (frontend-developer, ui-ux-designer)
+- `backend` - Backend/APIs (backend-architect, database-architect)
+- `mobile` - Mobile (mobile-developer, ios-developer)
+- `devops` - DevOps (devops-engineer, deployment-engineer)
+- `data` - Data (data-scientist, data-engineer)
+- (vacío) - Mostrar todas las categorías
+
+### Usage:
+```bash
+/oden:init agents core     # Solo esenciales
+/oden:init agents         # Ver todas las opciones
+```
+
+---
+
+## MCP MODE: /oden:init mcp [category]
+
+Instala MCPs (Model Context Protocol servers) recomendados.
+
+### Categories Disponibles:
+- `essential` - MCPs básicos (memory, context7)
+- `design` - Diseño (pencil, figma)
+- `backend` - Backend (supabase, postgres)
+- `testing` - Testing (chrome-devtools, playwright)
+- `mobile` - Mobile (ios-simulator)
+- `productivity` - Productivity (notion, linear)
+- (vacío) - Mostrar todas las categorías
+
+### Usage:
+```bash
+/oden:init mcp essential  # MCPs básicos
+/oden:init mcp           # Ver todas las opciones
+```
+
+### Auto-Detection:
+Basado en tu stack, se recomiendan automáticamente:
+- **React/Next.js** → chrome-devtools, memory
+- **Mobile** → ios-simulator, chrome-devtools
+- **Supabase** → supabase MCP
+- **Notion** → notion MCP
