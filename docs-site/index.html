@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oden Forge - MCPs for Claude Code Development</title>
-  <meta name="description" content="Model Context Protocol servers for Claude Code. One-click install, stack templates, and guides for supercharging your development workflow.">
+  <title>Oden Forge - Documentation-First Development Toolkit</title>
+  <meta name="description" content="Documentation-First Development toolkit for Claude Code. Build professional projects with guided methodology, Teams orchestration, and MCP management.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,15 +18,16 @@
     <div class="container">
       <a href="index.html" class="site-logo">
         <div class="logo-icon">O</div>
-        Oden Forge <span class="text-muted">MCPs</span>
+        Oden Forge <span class="text-muted">v2.2.1</span>
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       <nav class="site-nav">
-        <a href="index.html" class="active">MCPs</a>
-        <a href="templates/index.html">Stack Templates</a>
+        <a href="index.html" class="active">Overview</a>
         <a href="guides/install.html">Install Guide</a>
+        <a href="mcps/index.html">MCPs</a>
+        <a href="templates/index.html">Templates</a>
         <a href="guides/troubleshooting.html">Troubleshooting</a>
-        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+        <a href="https://github.com/javikin/oden-forge" class="nav-github" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
@@ -38,239 +39,285 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <h1>MCPs for Claude Code</h1>
+        <h1>Documentation-First Development</h1>
         <p class="subtitle">
-          Model Context Protocol servers that supercharge your development workflow. One-click install, ready-to-use configurations.
+          Professional project toolkit for Claude Code. Build complete applications with guided methodology, intelligent orchestration, and specialized agents.
         </p>
         <div class="hero-actions">
           <a href="guides/install.html" class="btn btn-primary">Get Started</a>
-          <a href="templates/index.html" class="btn btn-secondary">Browse Templates</a>
+          <a href="#commands" class="btn btn-secondary">8 Commands</a>
         </div>
         <div class="quick-install">
           <div class="install-box">
-            <code>git clone https://github.com/javikin/oden.git && cd oden && ./install.sh</code>
-            <button class="copy-btn" data-code="git clone https://github.com/javikin/oden.git && cd oden && ./install.sh">Copy</button>
+            <code>npm install -g oden-forge</code>
+            <button class="copy-btn" data-code="npm install -g oden-forge">Copy</button>
+          </div>
+          <div style="text-align: center; margin-top: 1rem; color: var(--color-text-muted); font-size: 0.9rem;">
+            Then run <code>/oden:init</code> in any Claude Code project
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MCP Catalog -->
-    <section class="section" id="catalog">
-      <div class="container">
-        <div class="section-header">
-          <h2>MCP Catalog</h2>
-          <p>All available Model Context Protocol servers, organized by category.</p>
-        </div>
-
-        <!-- Filters -->
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="essential">Essential</button>
-          <button class="filter-btn" data-filter="design">Design</button>
-          <button class="filter-btn" data-filter="backend">Backend</button>
-          <button class="filter-btn" data-filter="testing">Testing</button>
-          <button class="filter-btn" data-filter="devops">DevOps</button>
-          <button class="filter-btn" data-filter="mobile">Mobile</button>
-          <button class="filter-btn" data-filter="productivity">Productivity</button>
-        </div>
-
-        <!-- MCP Cards -->
-        <div class="mcp-grid">
-
-          <!-- Context7 -->
-          <div class="mcp-card" data-category="essential">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon essential">&#x1f4da;</div>
-              <div>
-                <div class="mcp-card-title">Context7</div>
-                <div class="mcp-card-type">HTTP</div>
-              </div>
-              <span class="tag tag-essential" style="margin-left:auto">Essential</span>
-            </div>
-            <p class="mcp-card-desc">Up-to-date documentation and code examples for any library. Works with Next.js, React, Supabase, and more.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Free API Key</span>
-              <a href="mcps/context7.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Figma -->
-          <div class="mcp-card" data-category="design">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon design">&#x1f3a8;</div>
-              <div>
-                <div class="mcp-card-title">Figma</div>
-                <div class="mcp-card-type">HTTP</div>
-              </div>
-              <span class="tag tag-design" style="margin-left:auto">Design</span>
-            </div>
-            <p class="mcp-card-desc">Access Figma designs directly from Claude Code. Extract components, styles, colors, and convert designs to code.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Figma account</span>
-              <a href="mcps/figma.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Supabase -->
-          <div class="mcp-card" data-category="backend">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon backend">&#x1f5c4;</div>
-              <div>
-                <div class="mcp-card-title">Supabase</div>
-                <div class="mcp-card-type">NPX</div>
-              </div>
-              <span class="tag tag-backend" style="margin-left:auto">Backend</span>
-            </div>
-            <p class="mcp-card-desc">Query your Supabase database schema, run read-only queries, view tables and relationships, all from Claude Code.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Access Token + Project Ref</span>
-              <a href="mcps/supabase.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Playwright -->
-          <div class="mcp-card" data-category="testing">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon testing">&#x1f3ad;</div>
-              <div>
-                <div class="mcp-card-title">Playwright</div>
-                <div class="mcp-card-type">NPX</div>
-              </div>
-              <span class="tag tag-testing" style="margin-left:auto">Testing</span>
-            </div>
-            <p class="mcp-card-desc">End-to-end testing with Playwright. Screenshots, video recording, cross-browser testing (Chrome, Firefox, Safari).</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Node.js</span>
-              <a href="mcps/playwright.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Chrome DevTools -->
-          <div class="mcp-card" data-category="testing">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon testing">&#x1f50d;</div>
-              <div>
-                <div class="mcp-card-title">Chrome DevTools</div>
-                <div class="mcp-card-type">NPX</div>
-              </div>
-              <span class="tag tag-testing" style="margin-left:auto">Testing</span>
-            </div>
-            <p class="mcp-card-desc">Control Chrome programmatically. Take screenshots, inspect elements, debug frontend issues directly from Claude Code.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Chrome installed</span>
-              <a href="mcps/chrome-devtools.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Vercel -->
-          <div class="mcp-card" data-category="devops">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon devops">&#x25b2;</div>
-              <div>
-                <div class="mcp-card-title">Vercel</div>
-                <div class="mcp-card-type">HTTP</div>
-              </div>
-              <span class="tag tag-devops" style="margin-left:auto">DevOps</span>
-            </div>
-            <p class="mcp-card-desc">View deployments, access logs, and manage your Vercel projects without leaving Claude Code.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Vercel account</span>
-              <a href="mcps/vercel.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- iOS Simulator -->
-          <div class="mcp-card" data-category="mobile">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon mobile">&#x1f4f1;</div>
-              <div>
-                <div class="mcp-card-title">iOS Simulator</div>
-                <div class="mcp-card-type">NPX</div>
-              </div>
-              <span class="tag tag-mobile" style="margin-left:auto">Mobile</span>
-            </div>
-            <p class="mcp-card-desc">Control iOS Simulator programmatically. Take screenshots, install apps, and test mobile UI directly from Claude Code.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: macOS + Xcode</span>
-              <a href="mcps/ios-simulator.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-          <!-- Notion -->
-          <div class="mcp-card" data-category="productivity">
-            <div class="mcp-card-header">
-              <div class="mcp-card-icon productivity">&#x1f4dd;</div>
-              <div>
-                <div class="mcp-card-title">Notion</div>
-                <div class="mcp-card-type">HTTP</div>
-              </div>
-              <span class="tag tag-productivity" style="margin-left:auto">Productivity</span>
-            </div>
-            <p class="mcp-card-desc">Access Notion pages, read team documentation, and create notes directly from your development workflow.</p>
-            <div class="mcp-card-footer">
-              <span class="mcp-card-requires">Requires: Notion account</span>
-              <a href="mcps/notion.html" class="btn btn-small btn-secondary">Details</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Stack Templates Preview -->
+    <!-- Core Philosophy -->
     <section class="section" style="background: var(--color-bg-alt);">
       <div class="container">
         <div class="section-header">
-          <h2>Stack Templates</h2>
-          <p>Pre-configured MCP bundles for popular tech stacks. Copy-paste ready.</p>
+          <h2>Core Philosophy</h2>
+          <p><em>"Documenta y diseña COMPLETAMENTE antes de codificar"</em></p>
         </div>
 
-        <div class="stack-grid">
-          <a href="templates/index.html#nextjs" class="stack-card">
-            <h3>Next.js Full Stack</h3>
-            <ul class="stack-card-mcps">
-              <li>Context7 - Library docs</li>
-              <li>Figma - Design integration</li>
-              <li>Supabase - Database</li>
-              <li>Vercel - Deployment</li>
-              <li>Playwright - E2E testing</li>
-            </ul>
-            <span class="btn btn-small btn-secondary">View Template</span>
-          </a>
+        <div class="philosophy-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="philosophy-card" style="padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+            <h3>Documentation-First</h3>
+            <p>Todo se documenta antes de codificar. 8,000+ líneas de specs, arquitectura técnica completa, y análisis competitivo.</p>
+          </div>
+          <div class="philosophy-card" style="padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+            <h3>Design Sprint Adaptado</h3>
+            <p>Diseño rápido → Validación → Iteración. Metodología ágil con entregas incrementales cada semana.</p>
+          </div>
+          <div class="philosophy-card" style="padding: 1.5rem; background: var(--color-bg); border-radius: 8px; border: 1px solid var(--color-border);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+            <h3>Entrega Incremental</h3>
+            <p>Valor tangible cada semana. De MVP en 8-10 semanas a productos enterprise en 14-20 semanas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <a href="templates/index.html#react-native" class="stack-card">
-            <h3>React Native Mobile</h3>
-            <ul class="stack-card-mcps">
-              <li>Context7 - Library docs</li>
-              <li>Figma - Design integration</li>
-              <li>iOS Simulator - Mobile testing</li>
-              <li>Chrome DevTools - Debugging</li>
-            </ul>
-            <span class="btn btn-small btn-secondary">View Template</span>
-          </a>
+    <!-- 8 Essential Commands -->
+    <section class="section" id="commands">
+      <div class="container">
+        <div class="section-header">
+          <h2>8 Comandos Esenciales</h2>
+          <p>Todo lo que necesitas para construir proyectos profesionales desde cero.</p>
+        </div>
 
-          <a href="templates/index.html#backend" class="stack-card">
-            <h3>Backend / API</h3>
-            <ul class="stack-card-mcps">
-              <li>Context7 - Library docs</li>
-              <li>Supabase - Database</li>
-            </ul>
-            <span class="btn btn-small btn-secondary">View Template</span>
-          </a>
+        <div class="commands-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
 
-          <a href="templates/index.html#fullstack" class="stack-card">
-            <h3>Full Stack Enterprise</h3>
-            <ul class="stack-card-mcps">
-              <li>Context7 - Library docs</li>
-              <li>Supabase - Database</li>
-              <li>Figma - Design integration</li>
-              <li>Vercel - Deployment</li>
-              <li>Playwright - E2E testing</li>
-              <li>Notion - Team docs</li>
+          <!-- Setup Commands -->
+          <div class="command-category" style="grid-column: 1 / -1; margin-bottom: 2rem;">
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600;">Setup y Configuración</h3>
+            <div class="command-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:init</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">Wizard interactivo completo para crear proyectos desde cero</p>
+              </div>
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:mcp</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">Gestionar MCPs (install, status, update, recommend)</p>
+              </div>
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:help</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">Documentación completa y guías interactivas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pre-Development Commands -->
+          <div class="command-category" style="grid-column: 1 / -1; margin-bottom: 2rem;">
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600;">Pre-Desarrollo (ejecutar en orden)</h3>
+            <div class="command-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <span style="background: #f59e0b; color: white; padding: 0.125rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">1</span>
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:architect</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">Technical decisions + DB schema (2000+ líneas)</p>
+              </div>
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <span style="background: #f59e0b; color: white; padding: 0.125rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">2</span>
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:prd</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">PRD con brainstorming inteligente y análisis competitivo</p>
+              </div>
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <span style="background: #f59e0b; color: white; padding: 0.125rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;">3</span>
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:epic</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">PRD → Epic técnico con work streams y tasks</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Development Commands -->
+          <div class="command-category" style="grid-column: 1 / -1;">
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600;">Desarrollo Inteligente ⭐</h3>
+            <div class="command-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              <div class="command-card featured" style="padding: 1.25rem; background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary)); color: white; border-radius: 8px; position: relative;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:work</code>
+                  <span style="margin-left: auto; font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">Orchestrator</span>
+                </div>
+                <p style="margin: 0; opacity: 0.9;">Orquestador automático con Teams y agentes paralelos</p>
+              </div>
+              <div class="command-card featured" style="padding: 1.25rem; background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 8px; position: relative;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:debug</code>
+                  <span style="margin-left: auto; font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">🆕 v2.2.1</span>
+                </div>
+                <p style="margin: 0; opacity: 0.9;">Queue-Based Debug Orchestration - debugging continuo</p>
+              </div>
+              <div class="command-card" style="padding: 1.25rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+                <div class="command-header" style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                  <code style="background: var(--color-bg-alt); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">/oden:sync</code>
+                </div>
+                <p style="margin: 0; color: var(--color-text-muted);">Sincronización perfecta con GitHub Issues</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- New Debug System Highlight -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>🆕 Revolutionary Debug System</h2>
+          <p>Queue-based orchestration para debugging continuo con máximo contexto</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem;">
+          <div>
+            <h3>Interactive Debug Session</h3>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:debug">Copy</button>
+              </div>
+              <pre><span class="comment"># Iniciar sesión interactiva</span>
+/oden:debug
+
+<span class="comment"># En el prompt debug></span>
+debug> add "fix login validation error"
+debug> add "improve test coverage"
+debug> priority 1 "critical: production issue"
+debug> status</pre>
+            </div>
+          </div>
+          <div>
+            <h4>Características Revolucionarias</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>Cola inteligente</strong> con auto-detección de dependencias
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>8+ agentes especializados</strong> (debugger, test-engineer, security-auditor...)
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>Context preservation</strong> máximo entre tareas
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>Smart agent selection</strong> basada en tipo de error
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>Session recovery</strong> para sesiones interrumpidas
+              </li>
+              <li style="margin-bottom: 0.75rem; display: flex; align-items: center;">
+                <span style="color: #10b981; margin-right: 0.5rem;">✓</span>
+                <strong>Auto-close</strong> después de 30min de inactividad
+              </li>
             </ul>
-            <span class="btn btn-small btn-secondary">View Template</span>
-          </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Flujo de Trabajo Completo</h2>
+          <p>Del concepto al código en pasos estructurados y documentados</p>
+        </div>
+
+        <div class="workflow-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+            <h4>/oden:init</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Wizard completo</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🏗️</div>
+            <h4>/oden:architect</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Technical decisions</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📋</div>
+            <h4>/oden:prd</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Product requirements</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+            <h4>/oden:epic</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Work streams</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🤖</div>
+            <h4>/oden:work</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Teams paralelos</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🔧</div>
+            <h4>/oden:debug</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Debug continuo</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+            <h4>/oden:sync</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">GitHub Issues</p>
+          </div>
+          <div class="workflow-step" style="text-align: center; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
+            <h4>Deploy</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Production ready</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Métricas de Éxito</h2>
+          <p>Resultados reales con la metodología Documentation-First</p>
+        </div>
+
+        <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="metric-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">8,000+</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Líneas de documentación</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">90%+</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Success rate debugging</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">8-20</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Semanas MVP a Enterprise</div>
+          </div>
+          <div class="metric-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">95%+</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Context preservation</div>
+          </div>
         </div>
       </div>
     </section>
@@ -280,76 +327,90 @@
       <div class="container">
         <div class="section-header">
           <h2>Quick Start</h2>
-          <p>Get up and running in under 2 minutes.</p>
+          <p>Desde cero a primer proyecto en menos de 5 minutos.</p>
         </div>
 
         <div class="guide-steps">
           <div class="guide-step">
             <div class="guide-step-content">
-              <h3>Install Oden Forge</h3>
-              <p>Clone the repository and run the installer.</p>
+              <h3>1. Instalar Oden Forge</h3>
+              <p>Instalación global via NPM.</p>
               <div class="code-block">
                 <div class="code-block-header">
                   <span class="code-block-lang">bash</span>
-                  <button class="copy-btn" data-code="git clone https://github.com/javikin/oden.git my-project && cd my-project && ./install.sh">Copy</button>
+                  <button class="copy-btn" data-code="npm install -g oden-forge">Copy</button>
                 </div>
-                <pre>git clone https://github.com/javikin/oden.git my-project
-cd my-project
-./install.sh</pre>
+                <pre>npm install -g oden-forge
+
+# Verificar instalación
+oden-forge --version  # 2.2.1</pre>
               </div>
             </div>
           </div>
 
           <div class="guide-step">
             <div class="guide-step-content">
-              <h3>Install MCPs from Claude Code</h3>
-              <p>Use the built-in command to install MCPs interactively.</p>
+              <h3>2. Inicializar Proyecto</h3>
+              <p>Wizard completo con metodología guiada.</p>
               <div class="code-block">
                 <div class="code-block-header">
                   <span class="code-block-lang">Claude Code</span>
-                  <button class="copy-btn" data-code="/oden:init-mcp essential">Copy</button>
+                  <button class="copy-btn" data-code="/oden:init">Copy</button>
                 </div>
-                <pre><span class="comment"># Install essential MCPs</span>
-/oden:init-mcp essential
+                <pre>cd tu-proyecto
 
-<span class="comment"># Or install by category</span>
-/oden:init-mcp design
-/oden:init-mcp testing</pre>
+# Wizard interactivo completo
+/oden:init</pre>
               </div>
             </div>
           </div>
 
           <div class="guide-step">
             <div class="guide-step-content">
-              <h3>Or configure manually</h3>
-              <p>Add MCP configurations directly to your <code>.mcp.json</code> file.</p>
+              <h3>3. Seguir el Flujo</h3>
+              <p>Documentation-First Development guiado.</p>
               <div class="code-block">
                 <div class="code-block-header">
-                  <span class="code-block-lang">json - .mcp.json</span>
-                  <button class="copy-btn" data-code='{"mcpServers":{"context7":{"type":"http","url":"https://mcp.context7.com/mcp"},"figma":{"type":"http","url":"https://mcp.figma.com/mcp"}}}'>Copy</button>
+                  <span class="code-block-lang">Claude Code</span>
+                  <button class="copy-btn" data-code="/oden:architect">Copy</button>
                 </div>
-                <pre>{
-  <span class="key">"mcpServers"</span>: {
-    <span class="key">"context7"</span>: {
-      <span class="key">"type"</span>: <span class="string">"http"</span>,
-      <span class="key">"url"</span>: <span class="string">"https://mcp.context7.com/mcp"</span>
-    },
-    <span class="key">"figma"</span>: {
-      <span class="key">"type"</span>: <span class="string">"http"</span>,
-      <span class="key">"url"</span>: <span class="string">"https://mcp.figma.com/mcp"</span>
-    }
-  }
-}</pre>
+                <pre><span class="comment"># Pre-desarrollo</span>
+/oden:architect    # Technical decisions
+/oden:prd auth     # Product requirements
+/oden:epic auth    # Work streams
+
+<span class="comment"># Desarrollo</span>
+/oden:work auth    # Teams paralelos
+/oden:debug        # Debug continuo
+/oden:sync auth    # GitHub sync</pre>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="guide-step">
-            <div class="guide-step-content">
-              <h3>Restart Claude Code</h3>
-              <p>MCPs load on startup. Restart Claude Code and verify with <code>/mcp</code>.</p>
-            </div>
-          </div>
+    <!-- Integration Links -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Ecosystem Integration</h2>
+          <p>Herramientas adicionales para potenciar tu desarrollo.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+          <a href="mcps/index.html" class="integration-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>MCPs</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Model Context Protocol servers para funcionalidades avanzadas</p>
+          </a>
+          <a href="templates/index.html" class="integration-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>Stack Templates</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Configuraciones pre-hechas para stacks populares</p>
+          </a>
+          <a href="guides/troubleshooting.html" class="integration-card" style="display: block; padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: inherit;">
+            <h4>Troubleshooting</h4>
+            <p style="color: var(--color-text-muted); margin: 0.5rem 0 0 0;">Soluciones a problemas comunes y debugging</p>
+          </a>
         </div>
       </div>
     </section>
@@ -361,36 +422,37 @@ cd my-project
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Oden Forge</h4>
-          <p>Documentation-First Development toolkit for Claude Code. Build professional projects from scratch.</p>
+          <p>Documentation-First Development toolkit for Claude Code. Build professional projects with guided methodology and intelligent orchestration.</p>
         </div>
         <div class="footer-col">
-          <h4>Documentation</h4>
+          <h4>Commands</h4>
           <ul>
-            <li><a href="index.html">MCP Catalog</a></li>
-            <li><a href="templates/index.html">Stack Templates</a></li>
-            <li><a href="guides/install.html">Installation</a></li>
-            <li><a href="guides/troubleshooting.html">Troubleshooting</a></li>
+            <li><a href="#commands">/oden:init - Setup</a></li>
+            <li><a href="#commands">/oden:architect - Architecture</a></li>
+            <li><a href="#commands">/oden:work - Development</a></li>
+            <li><a href="#commands">/oden:debug - Queue Debug</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>MCPs</h4>
+          <h4>Resources</h4>
           <ul>
-            <li><a href="mcps/context7.html">Context7</a></li>
-            <li><a href="mcps/figma.html">Figma</a></li>
-            <li><a href="mcps/supabase.html">Supabase</a></li>
-            <li><a href="mcps/playwright.html">Playwright</a></li>
+            <li><a href="guides/install.html">Installation Guide</a></li>
+            <li><a href="mcps/index.html">MCP Catalog</a></li>
+            <li><a href="templates/index.html">Stack Templates</a></li>
+            <li><a href="guides/troubleshooting.html">Troubleshooting</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Links</h4>
           <ul>
-            <li><a href="https://github.com/javikin/oden" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/javikin/oden-forge" target="_blank" rel="noopener">GitHub Repo</a></li>
+            <li><a href="https://npmjs.com/package/oden-forge" target="_blank" rel="noopener">NPM Package</a></li>
             <li><a href="guides/update.html">Update Guide</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>Oden Forge - Documentation-First Development</span>
+        <span>Oden Forge v2.2.1 - Documentation-First Development</span>
         <span>MIT License</span>
       </div>
     </div>

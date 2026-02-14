@@ -30,7 +30,7 @@ Sistema de skills para crear proyectos profesionales usando la metodología Docu
 ### Durante Desarrollo
 - `/oden:work [epic/issue]` - Orquestador inteligente con Teams (auto/config/smart)
 - `/oden:test [sub]` - Testing
-- `/oden:debug [sub]` - Debugging
+- `/oden:debug` - **Queue-Based Debug Orchestration** - sesión continua con sub-agentes y máximo contexto
 - `/oden:git [sub]` - Git workflow
 - `/oden:research [topic]` - Investigación técnica
 - `/oden:daily` - Registrar progreso del día

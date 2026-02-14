@@ -5,11 +5,12 @@ const { program } = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
 const { execSync } = require('child_process');
+const pkg = require('../package.json');
 
 program
   .name('oden-forge')
   .description('Documentation-First Development Toolkit for Claude Code')
-  .version('2.0.0');
+  .version(pkg.version);
 
 program
   .command('install')
