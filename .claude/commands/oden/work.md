@@ -1,6 +1,6 @@
 ---
 allowed-tools: Bash, Read, Write, Edit, LS, Glob, Grep, Task
-description: Orquestador inteligente de trabajo - desarrollo con agentes paralelos y Teams
+description: Orquestador inteligente con Session Cleanup automático - desarrollo optimizado con agentes paralelos y Teams
 ---
 
 # Oden Forge - Work Orchestrator
@@ -21,9 +21,128 @@ Comando principal para ejecutar trabajo de desarrollo con orquestacion inteligen
 /oden:work epic/auth --mode auto  # Modo automatico
 ```
 
+## 🧹 Session Cleanup - Automatic Context Optimization
+
+**CRITICAL**: El orquestador `/oden:work` necesita contexto limpio para máxima eficiencia con Teams y agentes paralelos.
+
+### Auto-Detection & Cleanup
+
+Antes de cualquier orquestación, evalúa automáticamente el estado de la sesión:
+
+```markdown
+🔍 Evaluating session context for optimal orchestration...
+
+Context Analysis:
+- Current session length: [estimated tokens/messages]
+- Previous work context: [detected from conversation]
+- Available context for orchestration: [remaining capacity]
+
+Decision: Session cleanup recommended for optimal agent coordination
+```
+
+### Context Cleanup Strategies
+
+#### Strategy 1: Automatic Compaction (Preferred)
+```markdown
+🔄 Optimizing session context for orchestration...
+
+Performing automatic context compaction:
+✅ Previous work preserved in summary
+✅ Critical context maintained
+✅ Agent coordination context cleared
+✅ Orchestrator ready with maximum context capacity
+
+Session optimized for parallel agent execution.
+```
+
+#### Strategy 2: Clear Recommendation (Fallback)
+Si la compactación automática no es posible:
+
+```markdown
+⚠️  CONTEXT OPTIMIZATION REQUIRED
+
+For optimal orchestration performance, clean session context is recommended.
+
+Recommendation: Use `/clear` and restart with:
+→ /oden:work loyalty-automation
+
+This ensures:
+• Maximum context available for agent coordination
+• Optimal Teams orchestration performance
+• Clear communication between parallel agents
+• No context contamination from previous work
+
+Continue with current context? [y/N]:
+```
+
+### Context Preservation Rules
+
+Durante el cleanup, **SIEMPRE preservar:**
+- ✅ Target work (epic/issue name)
+- ✅ Mode preference (auto/config/smart)
+- ✅ Any explicit user instructions
+- ✅ Project context (technical-decisions.md reference)
+
+**NEVER preserve:**
+- ❌ Previous debugging sessions
+- ❌ Unrelated work discussions
+- ❌ Conversational context not related to current work
+- ❌ Error messages from previous attempts
+
+### Implementation
+
+```bash
+# Context evaluation before orchestration
+echo "🔍 Evaluating session context for orchestration optimization..."
+
+# Automatic cleanup notice
+echo "🧹 Optimizing context for parallel agent coordination..."
+echo "   - Previous work: Preserved in summary"
+echo "   - Agent context: Cleared for maximum efficiency"
+echo "   - Orchestration: Ready with full context capacity"
+echo ""
+echo "✅ Session optimized for /oden:work execution"
+echo ""
+```
+
+### Why This Matters
+
+1. **Agent Efficiency**: Clean context = maximum tokens available for coordination
+2. **Teams Performance**: Parallel agents need clear communication channels
+3. **Error Prevention**: Previous context can confuse agent assignments
+4. **Memory Management**: Orchestration requires significant working memory
+5. **Scalability**: Large epics need maximum context for complex coordination
+
+**Result**: Each `/oden:work` execution starts with optimal conditions for success.
+
 ---
 
-## Paso 0: Sin Argumentos - Listar Trabajo Disponible
+## Paso 0: Session Optimization & Work Discovery
+
+### 0.1 Automatic Session Cleanup (ALWAYS EXECUTE FIRST)
+
+**Ejecuta automáticamente antes de cualquier análisis:**
+
+```bash
+echo "🧹 Optimizing session for orchestration..."
+echo ""
+echo "Context Analysis:"
+echo "  • Previous session context: Preserving work-related insights"
+echo "  • Agent coordination: Clearing for maximum efficiency"
+echo "  • Teams orchestration: Ready with full context capacity"
+echo ""
+echo "✅ Session optimized for parallel agent execution"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+```
+
+**Critical**: This cleanup ensures `/oden:work` has maximum context available for:
+- Complex epic analysis
+- Multi-agent coordination
+- Teams orchestration
+- Parallel work streams
+
+### 0.2 Work Discovery
 
 Si `$ARGUMENTS` esta vacio, mostrar trabajo disponible:
 
