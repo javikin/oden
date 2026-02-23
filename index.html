@@ -24,6 +24,7 @@
       <nav class="site-nav">
         <a href="index.html" class="active">Overview</a>
         <a href="guides/install.html">Install Guide</a>
+        <a href="guides/existing-projects.html">Proyectos Existentes</a>
         <a href="migration.html">Migration</a>
         <a href="mcps/index.html">MCPs</a>
         <a href="templates/index.html">Templates</a>
@@ -45,8 +46,9 @@
           Documentation-First Development revolucionario. 8 comandos esenciales, debugging inteligente, y orquestación automática para proyectos profesionales.
         </p>
         <div class="hero-actions">
-          <a href="guides/install.html" class="btn btn-primary">Get Started</a>
-          <a href="migration.html" class="btn btn-secondary">Migrar desde v1</a>
+          <a href="guides/install.html" class="btn btn-primary">Proyecto Nuevo</a>
+          <a href="guides/existing-projects.html" class="btn btn-secondary">Proyecto Existente</a>
+          <a href="migration.html" class="btn btn-outline">Migrar desde v1</a>
         </div>
         <div class="quick-install">
           <div class="install-box">
@@ -318,6 +320,47 @@ debug> status</pre>
           <div class="metric-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
             <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">95%+</div>
             <div style="font-size: 0.9rem; color: var(--color-text-muted);">Context preservation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Types -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Para Cualquier Proyecto</h2>
+          <p>Oden Forge funciona tanto para proyectos nuevos como existentes.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+          <div class="project-type" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+            <h3>Proyectos Nuevos</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">Documentation-First desde el primer día</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:init">Copy</button>
+              </div>
+              <pre>/oden:init          # Wizard completo
+/oden:architect     # Technical decisions
+/oden:prd feature   # Product requirements</pre>
+            </div>
+          </div>
+          <div class="project-type" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🔧</div>
+            <h3>Proyectos Existentes</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">Adopta Oden Forge en cualquier momento</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:debug">Copy</button>
+              </div>
+              <pre>/oden:debug         # Fix bugs existentes
+/oden:work feature  # Nuevos módulos
+/oden:architect     # Documentar arquitectura</pre>
+            </div>
           </div>
         </div>
       </div>

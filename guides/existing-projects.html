@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos Existentes - Oden Forge</title>
+  <meta name="description" content="Cómo integrar Oden Forge en proyectos existentes para debugging, nuevos módulos y arquitectura técnica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2692;</text></svg>">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon">O</div>
+        Oden Forge <span class="text-muted">v2.2.1</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="../index.html">Overview</a>
+        <a href="install.html">Install Guide</a>
+        <a href="../migration.html">Migration</a>
+        <a href="../mcps/index.html">MCPs</a>
+        <a href="../templates/index.html">Templates</a>
+        <a href="troubleshooting.html">Troubleshooting</a>
+        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="hero" style="padding: 4rem 0;">
+      <div class="container">
+        <h1>Proyectos Existentes</h1>
+        <p class="subtitle">
+          Integra Oden Forge en cualquier proyecto para debugging, nuevos módulos y documentación técnica.
+        </p>
+      </div>
+    </section>
+
+    <!-- Common Use Cases -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Casos de Uso Comunes</h2>
+          <p>Oden Forge funciona perfectamente en proyectos existentes sin necesidad de reestructurar.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🐛</div>
+            <h3>Debugging Inteligente</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Sistema de cola con agentes especializados para resolución continua de bugs.</p>
+            <div class="code-block">
+              <pre>/oden:debug</pre>
+            </div>
+          </div>
+
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+            <h3>Nuevos Módulos</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Desarrollo de features usando Teams paralelos y orquestación automática.</p>
+            <div class="code-block">
+              <pre>/oden:work feature-name</pre>
+            </div>
+          </div>
+
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🏗️</div>
+            <h3>Documentar Arquitectura</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Crear technical-decisions.md para proyectos sin documentación técnica.</p>
+            <div class="code-block">
+              <pre>/oden:architect</pre>
+            </div>
+          </div>
+
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🔍</div>
+            <h3>Research Técnico</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Investigación de soluciones, comparación de opciones y análisis técnico.</p>
+            <div class="code-block">
+              <pre>/oden:research topic</pre>
+            </div>
+          </div>
+
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+            <h3>Nuevas Features</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Pipeline completo PRD → Epic → Tasks con sincronización GitHub.</p>
+            <div class="code-block">
+              <pre>/oden:prd feature
+/oden:epic feature
+/oden:work feature</pre>
+            </div>
+          </div>
+
+          <div class="use-case-card" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">✅</div>
+            <h3>Code Review</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Revisión automática antes de PRs y merge a main.</p>
+            <div class="code-block">
+              <pre>/oden:review</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration Scenarios -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Escenarios de Integración</h2>
+          <p>Diferentes formas de adoptar Oden Forge según tu situación actual.</p>
+        </div>
+
+        <div class="scenario-list">
+          <!-- Scenario 1 -->
+          <div class="scenario" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 2rem;">
+            <h3>🚨 "Tengo bugs críticos que necesito resolver YA"</h3>
+            <p style="color: var(--color-text-muted); margin: 1rem 0;">Debugging inmediato con contexto máximo.</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:debug">Copy</button>
+              </div>
+              <pre><span class="comment"># Sesión interactiva con cola inteligente</span>
+/oden:debug
+
+<span class="comment"># En el prompt debug></span>
+debug> add "fix login validation error"
+debug> priority 1 "critical: payment processing"
+debug> status
+debug> work</pre>
+            </div>
+            <p><strong>Resultado:</strong> Sistema de cola con 8+ agentes especializados, context preservation, y resolución continua.</p>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="scenario" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 2rem;">
+            <h3>⚡ "Necesito desarrollar un nuevo módulo/feature"</h3>
+            <p style="color: var(--color-text-muted); margin: 1rem 0;">Teams paralelos con orquestación automática.</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:work user-dashboard">Copy</button>
+              </div>
+              <pre><span class="comment"># Desarrollo directo con Teams</span>
+/oden:work user-dashboard
+
+<span class="comment"># O pipeline completo para features complejas</span>
+/oden:prd user-dashboard    # Requirements
+/oden:epic user-dashboard   # Technical breakdown
+/oden:work user-dashboard   # Teams paralelos</pre>
+            </div>
+            <p><strong>Resultado:</strong> Agentes paralelos trabajando en streams separados (frontend, backend, tests) con sincronización automática.</p>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="scenario" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 2rem;">
+            <h3>📚 "Mi proyecto no tiene documentación técnica"</h3>
+            <p style="color: var(--color-text-muted); margin: 1rem 0;">Crear arquitectura técnica completa del proyecto existente.</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:architect">Copy</button>
+              </div>
+              <pre><span class="comment"># Analizar y documentar arquitectura existente</span>
+/oden:architect
+
+<span class="comment"># Investigación técnica específica</span>
+/oden:research "database optimization"
+/oden:research "authentication patterns"</pre>
+            </div>
+            <p><strong>Resultado:</strong> technical-decisions.md con 2000+ líneas, schema de BD, interfaces TypeScript, y decisiones arquitectónicas.</p>
+          </div>
+
+          <!-- Scenario 4 -->
+          <div class="scenario" style="padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 2rem;">
+            <h3>🔄 "Quiero adoptar metodología Documentation-First gradualmente"</h3>
+            <p style="color: var(--color-text-muted); margin: 1rem 0;">Adopción progresiva sin interrumpir desarrollo actual.</p>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-block-lang">Claude Code</span>
+                <button class="copy-btn" data-code="/oden:architect">Copy</button>
+              </div>
+              <pre><span class="comment"># Fase 1: Documentar lo existente</span>
+/oden:architect
+
+<span class="comment"># Fase 2: Nuevas features con metodología</span>
+/oden:prd next-feature
+/oden:epic next-feature
+
+<span class="comment"># Fase 3: Debugging estructurado</span>
+/oden:debug</pre>
+            </div>
+            <p><strong>Resultado:</strong> Transición gradual sin afectar desarrollo actual, documentación completa, y procesos estructurados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Setup -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Setup en 2 Minutos</h2>
+          <p>Empezar a usar Oden Forge en tu proyecto existente es súper simple.</p>
+        </div>
+
+        <div class="setup-steps">
+          <div class="setup-step" style="display: flex; align-items: start; gap: 2rem; margin-bottom: 2rem;">
+            <div style="flex-shrink: 0; width: 40px; height: 40px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</div>
+            <div style="flex-grow: 1;">
+              <h3>Instalar Oden Forge</h3>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">bash</span>
+                  <button class="copy-btn" data-code="npm install -g oden-forge">Copy</button>
+                </div>
+                <pre>npm install -g oden-forge</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-step" style="display: flex; align-items: start; gap: 2rem; margin-bottom: 2rem;">
+            <div style="flex-shrink: 0; width: 40px; height: 40px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">2</div>
+            <div style="flex-grow: 1;">
+              <h3>Navegar a tu proyecto</h3>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">bash</span>
+                  <button class="copy-btn" data-code="cd tu-proyecto-existente">Copy</button>
+                </div>
+                <pre>cd tu-proyecto-existente</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-step" style="display: flex; align-items: start; gap: 2rem; margin-bottom: 2rem;">
+            <div style="flex-shrink: 0; width: 40px; height: 40px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">3</div>
+            <div style="flex-grow: 1;">
+              <h3>Empezar a usar</h3>
+              <div class="code-block">
+                <div class="code-block-header">
+                  <span class="code-block-lang">Claude Code</span>
+                  <button class="copy-btn" data-code="/oden:debug">Copy</button>
+                </div>
+                <pre><span class="comment"># Para debugging inmediato</span>
+/oden:debug
+
+<span class="comment"># Para nueva feature</span>
+/oden:work feature-name
+
+<span class="comment"># Para documentar arquitectura</span>
+/oden:architect</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--color-bg-alt); padding: 2rem; border-radius: 8px; text-align: center; margin-top: 3rem;">
+          <h4>¡Eso es todo!</h4>
+          <p style="color: var(--color-text-muted);">No necesitas reestructurar, migrar, o cambiar nada en tu proyecto. Oden Forge se adapta a tu codebase existente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Beneficios para Proyectos Existentes</h2>
+          <p>Por qué Oden Forge funciona tan bien con proyectos ya iniciados.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="benefit-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+            <h4>Sin Reestructuración</h4>
+            <p style="color: var(--color-text-muted); margin: 0;">No necesitas cambiar tu estructura de archivos o migrar código existente.</p>
+          </div>
+          <div class="benefit-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+            <h4>Adopción Inmediata</h4>
+            <p style="color: var(--color-text-muted); margin: 0;">Empezar a usar comandos de debugging y desarrollo en menos de 2 minutos.</p>
+          </div>
+          <div class="benefit-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🤖</div>
+            <h4>Agentes Inteligentes</h4>
+            <p style="color: var(--color-text-muted); margin: 0;">8+ agentes especializados que entienden tu codebase automáticamente.</p>
+          </div>
+          <div class="benefit-card" style="text-align: center; padding: 2rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px;">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+            <h4>Adopción Gradual</h4>
+            <p style="color: var(--color-text-muted); margin: 0;">Usar solo los comandos que necesites, cuando los necesites.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Oden Forge</h4>
+          <p>Documentation-First Development toolkit for Claude Code. Build professional projects with guided methodology and intelligent orchestration.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Commands</h4>
+          <ul>
+            <li><a href="../index.html#commands">/oden:debug - Debug Sistema</a></li>
+            <li><a href="../index.html#commands">/oden:work - Development</a></li>
+            <li><a href="../index.html#commands">/oden:architect - Architecture</a></li>
+            <li><a href="../index.html#commands">/oden:research - Research</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="install.html">Installation Guide</a></li>
+            <li><a href="../mcps/index.html">MCP Catalog</a></li>
+            <li><a href="../templates/index.html">Stack Templates</a></li>
+            <li><a href="troubleshooting.html">Troubleshooting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/javikin/oden" target="_blank" rel="noopener">GitHub Repo</a></li>
+            <li><a href="https://npmjs.com/package/oden-forge" target="_blank" rel="noopener">NPM Package</a></li>
+            <li><a href="../guides/update.html">Update Guide</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Oden Forge v2.2.1 - Documentation-First Development</span>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
