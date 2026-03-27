@@ -8,33 +8,33 @@
 
 > "Your tools should stop bad code before it becomes your problem"
 
-## 🎯 Filosofía Core v3
+## 🎯 Core Philosophy v3
 
-**"Híbrido Adaptativo + Zero-Setup Friction + Intelligent Orchestration"**
+**"Adaptive Hybrid + Zero-Setup Friction + Intelligent Orchestration"**
 
-### 🆕 Novedades v3
-- **Living Quality Gates:** Enforcement automático de cobertura 80%+
-- **Auto-Detection Intelligence:** Detecta stack y configura automáticamente
-- **Pattern Detection:** Identifica duplicados y deriva arquitectural
-- **Context Preservation:** Mantiene contexto entre sesiones
-- **ADR Management:** Detecta decisiones faltantes automáticamente
+### 🆕 What's New in v3
+- **Living Quality Gates:** Automatic 80%+ coverage enforcement
+- **Auto-Detection Intelligence:** Detects stack and configures automatically
+- **Pattern Detection:** Identifies duplicates and architectural drift
+- **Context Preservation:** Maintains context between sessions
+- **ADR Management:** Automatically detects missing decisions
 
-## ⚡ Instalación (60 segundos)
+## ⚡ Installation (60 seconds)
 
 ```bash
-# Instalar globalmente
+# Install globally
 npm install -g oden-forge
 
-# Setup automático en tu proyecto
-cd tu-proyecto
+# Auto-setup in your project
+cd your-project
 /oden:init
 ```
 
-¡Listo! Las quality gates están activas.
+Done! Quality gates are now active.
 
-## 🛡️ Quality Gates en Acción
+## 🛡️ Quality Gates in Action
 
-### Cobertura Obligatoria
+### Mandatory Coverage
 ```bash
 $ /oden:test gates
 🛡️ TESTING QUALITY GATES ACTIVE
@@ -43,7 +43,7 @@ $ /oden:test gates
 ✅ Coverage trending: 78% → 85% ↗️
 ```
 
-### Detección de Patrones
+### Pattern Detection
 ```bash
 $ /oden:context detect
 🔍 PATTERN ANALYSIS COMPLETE
@@ -52,7 +52,7 @@ $ /oden:context detect
 🚀 Refactoring suggestions ready
 ```
 
-### ADRs Automáticos
+### Automatic ADRs
 ```bash
 $ /oden:adr suggest
 🏗️ MISSING ADR DETECTED
@@ -61,62 +61,62 @@ $ /oden:adr suggest
 📝 ADR templates ready for creation
 ```
 
-## 🎮 Comandos Principales
+## 🎮 Main Commands
 
 ### Setup
 ```bash
-/oden:init          # Setup automático completo
-/oden:help          # Documentación completa
+/oden:init          # Complete automatic setup
+/oden:help          # Full documentation
 ```
 
-### Pre-Desarrollo
+### Pre-Development
 ```bash
 /oden:architect     # Technical decisions + DB schema
-/oden:spec module   # Especificación detallada por módulo
-/oden:checklist     # Verificar todo listo
+/oden:spec module   # Detailed module specification
+/oden:checklist     # Verify everything is ready
 ```
 
 ### Feature Pipeline
 ```bash
-/oden:prd feature   # PRD con brainstorming inteligente
-/oden:epic feature  # PRD → Epic técnico
-/oden:work feature  # Implementación automática
+/oden:prd feature   # PRD with intelligent brainstorming
+/oden:epic feature  # PRD → Technical Epic
+/oden:work feature  # Automatic implementation
 ```
 
 ### Quality Gates
 ```bash
-/oden:test gates    # Verificar quality gates
-/oden:adr suggest   # Detectar ADRs faltantes
-/oden:context detect # Análisis de patrones
-/oden:review scope  # Code review automático
+/oden:test gates    # Verify quality gates
+/oden:adr suggest   # Detect missing ADRs
+/oden:context detect # Pattern analysis
+/oden:review scope  # Automatic code review
 ```
 
-Ver todos los comandos: [Guía Completa de Comandos](https://javikin.github.io/oden-forge/guides/commands.html)
+See all commands: [Complete Command Guide](https://javikin.github.io/oden-forge/guides/commands.html)
 
 ## 🏆 Built With Oden
 
 ### [Tu.coach](https://tu.coach/)
-AI coaching platform con quality gates desde el día uno. 85%+ cobertura enforced.
+AI coaching platform with quality gates from day one. 85%+ coverage enforced.
 
 ### [Oden Forge](https://github.com/javikin/oden)
-Oden Forge se construye usando Oden Forge. Self-hosting con 90%+ cobertura.
+Oden Forge is built using Oden Forge. Self-hosting with 90%+ coverage.
 
 ### [Oden Food](https://www.oden.food/)
-Restaurant platform con living ADRs y pattern detection que previno duplicación de código.
+Restaurant platform with living ADRs and pattern detection that prevented code duplication.
 
-## 🔥 Lo Que Previene
+## 🔥 What It Prevents
 
-| Problema | Solución |
-|----------|----------|
+| Problem | Solution |
+|---------|----------|
 | Commits without tests | 80% coverage required |
 | Duplicate code everywhere | Pattern detection |
 | Lost context between sessions | Automatic preservation |
 | Missing architecture decisions | ADR auto-detection |
 | God files and tech debt | Smart refactoring suggestions |
 
-## 🚀 Workflows Completos
+## 🚀 Complete Workflows
 
-### Nuevo Proyecto
+### New Project
 ```bash
 1. npm install -g oden-forge
 2. /oden:init
@@ -125,7 +125,7 @@ Restaurant platform con living ADRs y pattern detection que previno duplicación
 5. /oden:checklist
 ```
 
-### Implementar Feature
+### Implement Feature
 ```bash
 1. /oden:prd user-dashboard
 2. /oden:epic user-dashboard
@@ -134,7 +134,7 @@ Restaurant platform con living ADRs y pattern detection que previno duplicación
 5. /oden:review feature
 ```
 
-### Rutina Diaria
+### Daily Routine
 ```bash
 1. /oden:daily
 2. /oden:work #123
@@ -143,81 +143,81 @@ Restaurant platform con living ADRs y pattern detection que previno duplicación
 5. /oden:git commit
 ```
 
-## 📊 Métricas de Éxito
+## 📊 Success Metrics
 
 ### Quality Gates
-- ✅ **80%+ cobertura** enforced automáticamente
-- ✅ **Pattern detection** previene duplicación
-- ✅ **ADR compliance** 95%+ decisiones documentadas
-- ✅ **Context preservation** entre sesiones
+- ✅ **80%+ coverage** enforced automatically
+- ✅ **Pattern detection** prevents duplication
+- ✅ **ADR compliance** 95%+ decisions documented
+- ✅ **Context preservation** between sessions
 
-### Productividad
-- ✅ **60 segundos** setup inicial
+### Productivity
+- ✅ **60 seconds** initial setup
 - ✅ **Documentation-First** methodology
-- ✅ **Zero-config** para stacks populares
-- ✅ **Auto-detection** de frameworks
+- ✅ **Zero-config** for popular stacks
+- ✅ **Auto-detection** of frameworks
 
-### Resultados Reales
-- **🔥 Menos tiempo debugging:** Código que no pasa gates no llega a producción
-- **📈 Mejor cobertura:** De ~40% típico a 85%+ enforced
-- **⚡ Setup más rápido:** De horas de configuración a 60 segundos
-- **🧠 Menos decisiones fatiga:** ADRs automáticos para decisiones comunes
+### Real Results
+- **🔥 Less debugging time:** Code that doesn't pass gates never reaches production
+- **📈 Better coverage:** From ~40% typical to 85%+ enforced
+- **⚡ Faster setup:** From hours of configuration to 60 seconds
+- **🧠 Less decision fatigue:** Automatic ADRs for common decisions
 
-## 🏗️ Para Quién es Oden Forge
+## 🏗️ Who Is Oden Forge For
 
 ### 👥 Teams
-- **Startups:** MVP profesional en 8-10 semanas con quality gates desde día uno
-- **Enterprise:** Productos enterprise-ready en 14-20 semanas con 0 deuda técnica
-- **Consultoras:** Metodología estándar para todos los proyectos
+- **Startups:** Professional MVP in 8-10 weeks with quality gates from day one
+- **Enterprise:** Enterprise-ready products in 14-20 weeks with zero tech debt
+- **Consulting:** Standard methodology for all projects
 
-### 👨‍💻 Desarrolladores
-- **Senior:** Enforcement automático de mejores prácticas sin micromanaging
-- **Junior:** Guías automáticas y quality gates que enseñan mientras trabajas
-- **Freelancers:** Metodología profesional sin setup complejo
+### 👨‍💻 Developers
+- **Senior:** Automatic best practices enforcement without micromanaging
+- **Junior:** Automatic guides and quality gates that teach while you work
+- **Freelancers:** Professional methodology without complex setup
 
 ## 🔧 Claude Code Integration
 
-Oden Forge está diseñado específicamente para **Claude Code**:
+Oden Forge is designed specifically for **Claude Code**:
 
-- ✅ **Native integration** con comandos `/oden:`
-- ✅ **Context preservation** optimizado para Claude
-- ✅ **MCP support** para funcionalidades extendidas
-- ✅ **Agent orchestration** con sub-agentes especializados
+- ✅ **Native integration** with `/oden:` commands
+- ✅ **Context preservation** optimized for Claude
+- ✅ **MCP support** for extended functionality
+- ✅ **Agent orchestration** with specialized sub-agents
 
-## 📚 Documentación
+## 📚 Documentation
 
-- **[Landing Page](https://javikin.github.io/oden-forge/)** - Overview y features
-- **[Installation Guide](https://javikin.github.io/oden-forge/guides/install.html)** - Setup paso a paso
-- **[Command Reference](https://javikin.github.io/oden-forge/guides/commands.html)** - Todos los comandos
-- **[GitHub Repository](https://github.com/javikin/oden)** - Código fuente
+- **[Landing Page](https://javikin.github.io/oden-forge/)** - Overview and features
+- **[Installation Guide](https://javikin.github.io/oden-forge/guides/install.html)** - Step-by-step setup
+- **[Command Reference](https://javikin.github.io/oden-forge/guides/commands.html)** - All commands
+- **[GitHub Repository](https://github.com/javikin/oden)** - Source code
 
 ## 🛠️ Troubleshooting
 
-### Instalación
+### Installation
 ```bash
-# Si no encuentra el comando
+# If command not found
 npm install -g oden-forge@latest
 
-# Verificar instalación
+# Verify installation
 /oden:help
 ```
 
 ### Quality Gates
 ```bash
-# Verificar que funcionan
+# Verify they're working
 /oden:test gates
 
-# Ver estado detallado
+# See detailed status
 /oden:context detect
 ```
 
 ### Common Issues
 ```bash
-# Debug automático
+# Automatic debugging
 /oden:debug
 ```
 
-## 🤝 Contribuir
+## 🤝 Contributing
 
 ```bash
 git clone https://github.com/javikin/oden.git
@@ -225,21 +225,21 @@ cd oden
 npm install
 ```
 
-**Principios de contribución:**
-- Quality gates activos en el desarrollo
-- Documentation-First para nuevos features
-- 80%+ cobertura obligatorio
-- ADRs para decisiones arquitecturales
+**Contribution principles:**
+- Quality gates active in development
+- Documentation-First for new features
+- 80%+ coverage mandatory
+- ADRs for architectural decisions
 
-## 📄 Licencia
+## 📄 License
 
-MIT License - Ver [LICENSE](LICENSE) para más detalles.
+MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
 
-**[⭐ Star en GitHub](https://github.com/javikin/oden)** | **[📦 NPM Package](https://npmjs.com/package/oden-forge)** | **[📚 Documentación](https://javikin.github.io/oden-forge/)**
+**[⭐ Star on GitHub](https://github.com/javikin/oden)** | **[📦 NPM Package](https://npmjs.com/package/oden-forge)** | **[📚 Documentation](https://javikin.github.io/oden-forge/)**
 
 *Built with quality gates for developers who value craftsmanship*
 
