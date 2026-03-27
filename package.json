@@ -1,15 +1,16 @@
 {
   "name": "oden-forge",
-  "version": "2.5.0",
-  "description": "Documentation-First Development Toolkit for Claude Code - Create professional projects with built-in methodology, Teams orchestration, and MCP management",
+  "version": "3.0.0",
+  "description": "Living Quality Gates for Claude Code - Enforce 80%+ test coverage, detect patterns, and prevent bad code from reaching production with automatic quality enforcement",
   "keywords": [
     "claude-code",
-    "documentation-first",
+    "quality-gates",
+    "testing",
+    "coverage",
+    "code-quality",
     "development-toolkit",
-    "project-management",
     "skills",
-    "mcp",
-    "teams"
+    "mcp"
   ],
   "homepage": "https://javikin.github.io/oden-forge",
   "repository": {
@@ -34,16 +35,14 @@
   "files": [
     "bin/",
     ".claude/",
-    "install.sh",
-    "README.md",
-    "MIGRATION.md"
+    "README.md"
   ],
   "scripts": {
     "postinstall": "node bin/post-install.js",
     "preuninstall": "node bin/pre-uninstall.js",
     "test": "echo \"No tests yet\" && exit 0",
-    "docs:dev": "cd docs-site && python3 -m http.server 8000",
-    "docs:deploy": "gh-pages -d docs-site"
+    "docs:dev": "cd docs && python3 -m http.server 8000",
+    "docs:deploy": "echo \"Docs deployed via GitHub Pages automatically\""
   },
   "preferGlobal": true,
   "dependencies": {
@@ -67,6 +66,10 @@
       "oden:tasks",
       "oden:work",
       "oden:sync",
+      "oden:test",
+      "oden:adr",
+      "oden:context",
+      "oden:debug",
       "oden:mcp",
       "oden:help"
     ],
