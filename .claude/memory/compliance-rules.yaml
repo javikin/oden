@@ -1,0 +1,140 @@
+# Context Preservation - Architecture Compliance Rules
+# Created: 2026-03-27T07:09:47Z
+
+rules:
+  # File size limits to prevent God classes/files
+  file_size_limit:
+    max_lines: 500
+    scan_patterns:
+      - "src/**/*.ts"
+      - "src/**/*.tsx"
+      - "src/**/*.js"
+      - "src/**/*.jsx"
+    exceptions:
+      - "src/types/index.ts"  # Type definitions can be longer
+      - "src/constants/index.ts"  # Constants file exception
+    violation_action: "split_file"
+
+  # Import pattern enforcement
+  import_patterns:
+    forbidden_imports:
+      - pattern: "import.*from 'axios'"
+        message: "Use fetch wrapper from src/lib/api.ts instead"
+        severity: "warning"
+      - pattern: "import.*from '../../../'"
+        message: "Deep relative imports not allowed. Use absolute imports with src/ prefix"
+        severity: "error"
+      - pattern: "import.*'lodash'"
+        message: "Use individual lodash imports to reduce bundle size"
+        severity: "warning"
+
+    required_patterns:
+      - file_pattern: "src/pages/**/*.tsx"
+        must_import: "src/hooks/useAuth"
+        when_using: ["authentication", "user", "login"]
+        message: "Pages using auth must import useAuth hook"
+
+  # Architecture layer compliance
+  architecture_layers:
+    "src/pages":
+      description: "UI Pages - presentation layer"
+      can_import:
+        - "src/components"
+        - "src/hooks"
+        - "src/services"
+        - "src/utils"
+        - "src/types"
+      cannot_import:
+        - "src/lib/database"
+        - "src/utils/server"
+      message: "Pages should not directly access database or server utilities"
+
+    "src/components":
+      description: "Reusable UI components"
+      can_import:
+        - "src/hooks"
+        - "src/utils"
+        - "src/types"
+        - "src/constants"
+      cannot_import:
+        - "src/services"
+        - "src/pages"
+        - "src/lib/database"
+      message: "Components should be pure and not handle business logic"
+
+    "src/services":
+      description: "Business logic layer"
+      can_import:
+        - "src/lib"
+        - "src/types"
+        - "src/utils"
+        - "src/constants"
+      cannot_import:
+        - "src/components"
+        - "src/pages"
+        - "src/hooks"
+      message: "Services should not depend on UI components"
+
+  # Naming conventions
+  naming_conventions:
+    files:
+      - pattern: "src/components/**/*.tsx"
+        naming: "PascalCase"
+        example: "UserProfile.tsx"
+      - pattern: "src/hooks/**/*.ts"
+        naming: "use + PascalCase"
+        example: "useAuth.ts"
+      - pattern: "src/utils/**/*.ts"
+        naming: "camelCase"
+        example: "formatCurrency.ts"
+
+    functions:
+      - pattern: "export const use*"
+        type: "hook"
+        returns: "object or array"
+      - pattern: "export const format*"
+        type: "formatter"
+        returns: "string"
+      - pattern: "export const is*"
+        type: "predicate"
+        returns: "boolean"
+
+  # Pattern enforcement
+  pattern_requirements:
+    error_handling:
+      - files: "src/services/**/*.ts"
+        must_have: "try-catch blocks"
+        message: "All service functions must handle errors"
+      - files: "src/api/**/*.ts"
+        must_have: "ApiResponse<T> wrapper"
+        message: "API functions must use consistent response format"
+
+    testing:
+      - pattern: "src/**/*.ts"
+        must_have_test: "src/**/*.test.ts"
+        coverage_minimum: 80
+        message: "All source files require corresponding test files"
+
+# Compliance checking configuration
+compliance_check:
+  auto_run_on:
+    - "git commit"
+    - "session start"
+    - "before PR creation"
+
+  report_format: "markdown"
+  fail_on_violations: ["error"]
+  warn_on_violations: ["warning"]
+
+# Pattern detection settings
+pattern_detection:
+  similarity_threshold: 80  # Percentage similarity to flag as duplicate
+  ignore_patterns:
+    - "*.test.ts"
+    - "*.spec.ts"
+    - "*.d.ts"
+  function_patterns:
+    - "export function"
+    - "export const"
+    - "function"
+  scan_extensions: [".ts", ".tsx", ".js", ".jsx"]
