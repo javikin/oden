@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Reference - Oden Forge v3</title>
+  <meta name="description" content="Complete command reference for Oden Forge v3. Every command with examples and usage patterns.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2692;</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index-v3-original.html" class="site-logo">
+        <div class="logo-icon">O</div>
+        Oden Forge <span class="text-muted">v3</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="../index-v3-original.html">Home</a>
+        <a href="../templates/index.html">Stack Templates</a>
+        <a href="install.html">Install Guide</a>
+        <a href="commands.html" class="active">Commands</a>
+        <a href="troubleshooting.html">Troubleshooting</a>
+        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index-v3-original.html">Home</a> / Command Reference
+        </div>
+        <h1>Command Reference</h1>
+        <div class="meta">
+          <span>Complete guide to all Oden Forge v3 commands</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+
+        <!-- Quick Reference -->
+        <div class="alert alert-info" style="margin-bottom: 2rem;">
+          <div>
+            <strong>New to Oden?</strong> Start with <code>/oden:init</code> to set up your project, then follow the workflow: <code>/oden:architect</code> → <code>/oden:spec</code> → <code>/oden:prd</code> → <code>/oden:epic</code> → <code>/oden:work</code>
+          </div>
+        </div>
+
+        <!-- Setup Commands -->
+        <h2 class="mt-4">Setup Commands</h2>
+        <p>Initialize and configure your Oden Forge environment.</p>
+
+        <div class="command-section">
+          <h3><code>/oden:init</code></h3>
+          <p><strong>Purpose:</strong> Interactive wizard to set up a new project with quality gates</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:init</pre>
+          </div>
+          <p><strong>What it does:</strong></p>
+          <ul>
+            <li>Detects your tech stack (React, Node.js, Python, etc.)</li>
+            <li>Installs recommended MCPs for your stack</li>
+            <li>Sets up quality gates (80% coverage, ADR detection, etc.)</li>
+            <li>Creates initial documentation structure</li>
+          </ul>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:init-mcp</code></h3>
+          <p><strong>Purpose:</strong> Install MCPs by category</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:init-mcp essential
+/oden:init-mcp design
+/oden:init-mcp backend</pre>
+          </div>
+          <p><strong>Categories:</strong> essential, design, backend, testing, mobile, devops, productivity</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:help</code></h3>
+          <p><strong>Purpose:</strong> Show help and available commands</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:help</pre>
+          </div>
+        </div>
+
+        <!-- Pre-Development Commands -->
+        <h2 class="mt-5">Pre-Development Workflow</h2>
+        <p>Execute these commands in order before writing any code.</p>
+
+        <div class="command-section">
+          <h3><code>/oden:architect</code></h3>
+          <p><strong>Purpose:</strong> Create technical decisions document and database schema</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:architect</pre>
+          </div>
+          <p><strong>Creates:</strong></p>
+          <ul>
+            <li><code>docs/reference/technical-decisions.md</code> (2000+ lines)</li>
+            <li>Complete database schema</li>
+            <li>TypeScript interfaces</li>
+            <li>Technology stack justification</li>
+          </ul>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:spec [module]</code></h3>
+          <p><strong>Purpose:</strong> Create detailed specification for a module</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:spec auth
+/oden:spec payments
+/oden:spec dashboard</pre>
+          </div>
+          <p><strong>Creates:</strong> 800+ line specification with state machines, validations, and edge cases</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:checklist</code></h3>
+          <p><strong>Purpose:</strong> Verify everything is ready before coding</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:checklist</pre>
+          </div>
+          <p><strong>Checks:</strong> Technical decisions completeness, specs quality, documentation structure</p>
+        </div>
+
+        <!-- Feature Pipeline Commands -->
+        <h2 class="mt-5">Feature Pipeline</h2>
+        <p>Turn ideas into shippable features with structured planning.</p>
+
+        <div class="command-section">
+          <h3><code>/oden:prd [feature-name]</code></h3>
+          <p><strong>Purpose:</strong> Create Product Requirements Document with AI brainstorming</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:prd user-authentication
+/oden:prd real-time-chat</pre>
+          </div>
+          <p><strong>Output:</strong> Comprehensive PRD with user stories, acceptance criteria, and competitive analysis</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:epic [feature-name]</code></h3>
+          <p><strong>Purpose:</strong> Convert PRD into technical epic with work streams</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:epic user-authentication</pre>
+          </div>
+          <p><strong>Creates:</strong> Technical breakdown with parallel work streams and dependencies</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:tasks [epic-name]</code></h3>
+          <p><strong>Purpose:</strong> Decompose epic into actionable GitHub issues</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:tasks user-authentication</pre>
+          </div>
+          <p><strong>Output:</strong> Individual tasks ready for implementation</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:sync [epic-name]</code></h3>
+          <p><strong>Purpose:</strong> Synchronize tasks with GitHub Issues</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:sync user-authentication
+/oden:sync status</pre>
+          </div>
+          <p><strong>Features:</strong> Bidirectional sync, status tracking, automatic updates</p>
+        </div>
+
+        <!-- Development Commands -->
+        <h2 class="mt-5">Development Commands</h2>
+        <p>Quality-first development with intelligent orchestration.</p>
+
+        <div class="command-section">
+          <h3><code>/oden:work [epic/issue]</code></h3>
+          <p><strong>Purpose:</strong> Intelligent orchestrator for implementing features</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:work user-authentication
+/oden:work #123</pre>
+          </div>
+          <p><strong>Modes:</strong></p>
+          <ul>
+            <li><strong>auto:</strong> Fully automated implementation</li>
+            <li><strong>config:</strong> Guided implementation with checkpoints</li>
+            <li><strong>smart:</strong> AI-assisted pair programming</li>
+          </ul>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:test [subcommand]</code></h3>
+          <p><strong>Purpose:</strong> Testing operations with quality gates</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:test gates
+/oden:test coverage
+/oden:test run</pre>
+          </div>
+          <p><strong>Quality gates:</strong> Enforces 80% coverage minimum, blocks commits without tests</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:debug</code></h3>
+          <p><strong>Purpose:</strong> Queue-based debug orchestration with persistent context</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:debug</pre>
+          </div>
+          <p><strong>Features:</strong> Continuous session, sub-agents, maximum context preservation</p>
+        </div>
+
+        <!-- Utility Commands -->
+        <h2 class="mt-5">Utility Commands</h2>
+
+        <div class="command-section">
+          <h3><code>/oden:research [topic]</code></h3>
+          <p><strong>Purpose:</strong> Technical research with competitive analysis</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:research "real-time sync patterns"
+/oden:research "react state management 2024"</pre>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:daily</code></h3>
+          <p><strong>Purpose:</strong> Daily progress logging</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:daily</pre>
+          </div>
+          <p><strong>Tracks:</strong> Completed work, blockers, next priorities</p>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:review [scope]</code></h3>
+          <p><strong>Purpose:</strong> Code review before merge</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:review feature
+/oden:review security
+/oden:review performance</pre>
+          </div>
+        </div>
+
+        <div class="command-section">
+          <h3><code>/oden:git [subcommand]</code></h3>
+          <p><strong>Purpose:</strong> Git workflow management</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Usage</span>
+            </div>
+            <pre>/oden:git status
+/oden:git commit
+/oden:git pr</pre>
+          </div>
+        </div>
+
+        <!-- Workflow Examples -->
+        <h2 class="mt-5">Common Workflows</h2>
+
+        <div class="workflow-example">
+          <h3>Starting a New Project</h3>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Complete Setup</span>
+            </div>
+            <pre>1. /oden:init
+2. /oden:architect
+3. /oden:spec auth
+4. /oden:spec api
+5. /oden:checklist</pre>
+          </div>
+        </div>
+
+        <div class="workflow-example">
+          <h3>Implementing a Feature</h3>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Feature Pipeline</span>
+            </div>
+            <pre>1. /oden:prd user-dashboard
+2. /oden:epic user-dashboard
+3. /oden:tasks user-dashboard
+4. /oden:sync user-dashboard
+5. /oden:work user-dashboard</pre>
+          </div>
+        </div>
+
+        <div class="workflow-example">
+          <h3>Daily Development</h3>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Daily Routine</span>
+            </div>
+            <pre>1. /oden:daily
+2. /oden:work #123
+3. /oden:test gates
+4. /oden:review feature
+5. /oden:git commit</pre>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <h2 class="mt-5">Next Steps</h2>
+        <ul>
+          <li>Start with the <a href="install.html">Installation Guide</a> if you haven't set up Oden yet</li>
+          <li>Try the <a href="../templates/index.html">Stack Templates</a> for pre-configured setups</li>
+          <li>Check <a href="troubleshooting.html">Troubleshooting</a> if commands don't work as expected</li>
+          <li>Explore the <a href="../index-v3-original.html">Quality Gates features</a> for more details</li>
+        </ul>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>Oden Forge - Documentation-First Development</span>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

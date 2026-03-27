@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context7 MCP - Oden Forge</title>
+  <meta name="description" content="Context7 MCP for Claude Code - Up-to-date documentation and code examples for any library.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2692;</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <div class="logo-icon">O</div>
+        Oden Forge <span class="text-muted">MCPs</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="../index.html" class="active">MCPs</a>
+        <a href="../templates/index.html">Stack Templates</a>
+        <a href="../guides/install.html">Install Guide</a>
+        <a href="../guides/troubleshooting.html">Troubleshooting</a>
+        <a href="https://github.com/javikin/oden" class="nav-github" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">MCPs</a> / Context7
+        </div>
+        <h1>
+          <span style="font-size: 1.5rem;">&#x1f4da;</span>
+          Context7
+        </h1>
+        <div class="meta">
+          <span class="tag tag-essential">Essential</span>
+          <span>Type: HTTP</span>
+          <span>Free API Key</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="detail-content">
+        <div class="detail-main">
+
+          <h2>One-Click Install</h2>
+          <p>Run this command inside Claude Code to install Context7:</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Claude Code</span>
+              <button class="copy-btn" data-code="/oden:init-mcp essential">Copy</button>
+            </div>
+            <pre>/oden:init-mcp essential</pre>
+          </div>
+
+          <h2>Manual Configuration</h2>
+          <p>Add this to your <code>.mcp.json</code> file in the project root:</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">json - .mcp.json</span>
+              <button class="copy-btn" data-code='{"mcpServers":{"context7":{"type":"http","url":"https://mcp.context7.com/mcp"}}}'>Copy</button>
+            </div>
+            <pre>{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"context7"</span>: {
+      <span class="key">"type"</span>: <span class="string">"http"</span>,
+      <span class="key">"url"</span>: <span class="string">"https://mcp.context7.com/mcp"</span>
+    }
+  }
+}</pre>
+          </div>
+
+          <div class="alert alert-info">
+            <span class="alert-icon">&#x2139;&#xfe0f;</span>
+            <div>Context7 offers a free API key. Visit <strong>context7.com</strong> to get yours. If you use it without a key, it still works but with rate limits.</div>
+          </div>
+
+          <h2>What It Does</h2>
+          <ul>
+            <li>Retrieves up-to-date documentation for any npm/pip/crate library</li>
+            <li>Provides real code examples from official docs</li>
+            <li>Works with Next.js, React, Vue, Supabase, Tailwind, and hundreds more</li>
+            <li>Keeps Claude Code from hallucinating outdated API patterns</li>
+          </ul>
+
+          <h2>Usage Examples</h2>
+          <p>Once installed, Claude Code will automatically use Context7 when researching libraries. You can also prompt it directly:</p>
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-lang">Prompt examples</span>
+            </div>
+            <pre><span class="comment"># Ask about a library using Context7</span>
+<span class="string">"How do I use the new App Router in Next.js 15?"</span>
+
+<span class="comment"># Get updated API patterns</span>
+<span class="string">"Show me how to create a Supabase RLS policy"</span>
+
+<span class="comment"># Research a specific feature</span>
+<span class="string">"What's the correct way to use React Server Components?"</span></pre>
+          </div>
+
+          <h2>Best Practices</h2>
+          <ul>
+            <li>Install Context7 on every project - it prevents outdated code suggestions</li>
+            <li>Mention specific library versions when asking questions for better results</li>
+            <li>Use <code>/oden:research docs [lib] [topic]</code> for structured research</li>
+          </ul>
+
+          <h2>Included In Templates</h2>
+          <p>Context7 is included in all stack templates:</p>
+          <ul>
+            <li><a href="../templates/index.html#nextjs">Next.js Full Stack</a></li>
+            <li><a href="../templates/index.html#react-native">React Native Mobile</a></li>
+            <li><a href="../templates/index.html#backend">Backend / API</a></li>
+            <li><a href="../templates/index.html#fullstack">Full Stack Enterprise</a></li>
+          </ul>
+        </div>
+
+        <div class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>Quick Info</h4>
+            <div class="sidebar-card-item">Type: HTTP</div>
+            <div class="sidebar-card-item">Category: Essential</div>
+            <div class="sidebar-card-item">Cost: Free (API key optional)</div>
+            <div class="sidebar-card-item">Difficulty: Easy</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Requirements</h4>
+            <div class="sidebar-card-item">Claude Code installed</div>
+            <div class="sidebar-card-item">Internet connection</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Related MCPs</h4>
+            <div class="sidebar-card-item"><a href="figma.html">Figma</a></div>
+            <div class="sidebar-card-item"><a href="supabase.html">Supabase</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>Oden Forge - Documentation-First Development</span>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
